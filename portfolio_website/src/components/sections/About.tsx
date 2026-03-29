@@ -18,7 +18,7 @@ export function AboutSection() {
                 gridTemplateColumns: "1fr min(100%, 24rem)",
                 padding: "clamp(1.5rem, 5vw, 4rem)",
                 paddingTop: "clamp(5rem, 9vw, 7rem)",
-                gap: "clamp(1.5rem, 5vw, 4rem)",
+                gap: "clamp(1rem, 2.5vw, 2rem)",
                 alignItems: "start",
                 overflow: "hidden",
             }}
