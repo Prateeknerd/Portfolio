@@ -91,8 +91,10 @@ export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
                             textAlign: "left",
                             display: "block",
                             opacity: isOpen ? 1 : 0,
+                            transitionProperty: "opacity, color, -webkit-text-stroke-color, transform",
+                            transitionDuration: "0.5s, 0.3s, 0.3s, 0.35s",
+                            transitionTimingFunction: "ease, ease, ease, cubic-bezier(0.23,1,0.32,1)",
                             transitionDelay: isOpen ? `${i * 0.07 + 0.3}s` : "0s",
-                            transition: "opacity 0.5s, color 0.3s, -webkit-text-stroke-color 0.3s, transform 0.35s cubic-bezier(0.23,1,0.32,1)",
                         }}
                         onMouseEnter={e => {
                             const el = e.currentTarget as HTMLElement;
