@@ -15,7 +15,7 @@ export function AboutSection() {
             className="section-root"
             style={{
                 display: "grid",
-                gridTemplateColumns: "1fr 1fr",
+                gridTemplateColumns: "1fr min(100%, 24rem)",
                 padding: "clamp(1.5rem, 5vw, 4rem)",
                 paddingTop: "clamp(5rem, 9vw, 7rem)",
                 gap: "clamp(1.5rem, 5vw, 4rem)",
