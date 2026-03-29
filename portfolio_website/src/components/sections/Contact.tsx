@@ -48,7 +48,6 @@ export function ContactSection() {
                 overflow: "hidden",
                 textAlign: "center",
                 gap: "clamp(1.25rem, 2.5vw, 2rem)",
-                background: "#050608",
             }}
         >
             {/* Mono tag */}
