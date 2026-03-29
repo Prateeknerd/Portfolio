@@ -170,7 +170,10 @@ export function AboutSection() {
                     borderRadius: "2rem",
                     overflow: "hidden",
                     maxHeight: "75vh",
+                    maxWidth: "28rem",
+                    width: "100%",
                     alignSelf: "center",
+                    justifySelf: "center",
                 }}
             >
                 {/* Teal glow */}
