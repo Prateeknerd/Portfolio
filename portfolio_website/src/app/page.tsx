@@ -5,7 +5,7 @@ import { useState, useCallback } from "react";
 // Core
 import { GrainOverlay } from "@/components/core/GrainOverlay";
 import { CustomCursor } from "@/components/core/CustomCursor";
-import { MeshBlobs } from "@/components/core/MeshBlobs";
+import { InteractiveWavesBackground } from "@/components/core/InteractiveWavesBackground";
 import { PageLoader } from "@/components/core/PageLoader";
 import { CircularNav } from "@/components/core/CircularNav";
 import { SectionProgress } from "@/components/core/SectionProgress";
@@ -38,8 +38,8 @@ export default function Home() {
       {/* Custom magnetic cursor */}
       <CustomCursor />
 
-      {/* Background mesh blobs */}
-      <MeshBlobs />
+      {/* Background interactive waves */}
+      <InteractiveWavesBackground />
 
       {/* Page loader — renders until loaded */}
       {!loaded && <PageLoader onComplete={handleLoaderComplete} />}
