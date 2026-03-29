@@ -173,7 +173,7 @@ export function AboutSection() {
                     maxWidth: "28rem",
                     width: "100%",
                     alignSelf: "center",
-                    justifySelf: "center",
+                    justifySelf: "flex-start",
                 }}
             >
                 {/* Teal glow */}
