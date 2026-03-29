@@ -7,7 +7,7 @@ export function AboutSection() {
     const stats = [
         { value: "2+", label: "Years Coding" },
         { value: "CSE-DS", label: "Specialisation" },
-        { value: "MAHE", label: "University" },
+        { value: "MIT", label: "Institute" },
     ];
 
     return (
@@ -67,7 +67,7 @@ export function AboutSection() {
                     maxWidth: "36rem",
                 }}>
                     Sophomore Computer Science Engineering student specializing in Data Science
-                    at Manipal Academy of Higher Education, Bengaluru. I work with Python, Java,
+                    at Manipal Institute of Technology, Bengaluru. I work with Python, Java,
                     and C — building data pipelines, exploring ML, and solving algorithmic problems.
                     <br /><br />
                     Outside of academics, I serve as Video Editing Head for SideQuest Gaming Club —
