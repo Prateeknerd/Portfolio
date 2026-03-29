@@ -1,83 +1,175 @@
 "use client";
 
-import { BookOpen, Code2, Clapperboard, GraduationCap } from "lucide-react";
+import Image from "next/image";
 
-export function About() {
-    const highlights = [
-        {
-            icon: <Code2 className="h-6 w-6 text-primary" />,
-            title: "Data Science",
-            description: "Specializing in Data Science at Manipal Academy.",
-        },
-        {
-            icon: <Clapperboard className="h-6 w-6 text-secondary" />,
-            title: "Video Editing",
-            description: "Head of Video Editing for SideQuest Gaming Club.",
-        },
-        {
-            icon: <BookOpen className="h-6 w-6 text-primary" />,
-            title: "Creative Storytelling",
-            description: "Producing engaging visual content and reels.",
-        },
-        {
-            icon: <GraduationCap className="h-6 w-6 text-secondary" />,
-            title: "Education",
-            description: "B.Tech in Computer Science Engineering (Sophomore).",
-        },
+export function AboutSection() {
+    const stats = [
+        { value: "2+", label: "Years Editing" },
+        { value: "20+", label: "Reels Published" },
+        { value: "CSE", label: "Data Science" },
     ];
 
     return (
-        <section id="about" className="py-20 md:py-32">
-            <div className="flex flex-col items-center text-center mb-16">
-                <h2 className="text-3xl md:text-5xl font-poppins font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-4">
-                    About Me
-                </h2>
-                <div className="h-1 w-20 bg-gradient-to-r from-primary to-secondary rounded-full"></div>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Biography text */}
-                <div className="glass p-8 md:p-10 rounded-3xl order-2 lg:order-1 relative overflow-hidden group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <h3 className="text-2xl font-poppins font-semibold mb-4 text-foreground">
-                        My Journey
-                    </h3>
-                    <div className="space-y-4 text-muted-foreground leading-relaxed">
-                        <p>
-                            I am a Sophomore Computer Science Engineering student specializing in Data Science at
-                            Manipal Academy of Higher Education, Bengaluru. I have a proven track record in technical leadership
-                            and professional digital content creation.
-                        </p>
-                        <p>
-                            As the Video Editing Head for SideQuest Gaming Club, I lead visual content production, edit and
-                            publish engaging Instagram reels, and collaborate directly with club members to drive creative
-                            storytelling within our college gaming community.
-                        </p>
-                        <p>
-                            Beyond coding in C, Java, and Python, my soft skills emphasize strong communication,
-                            interpersonal adaptability, and team collaboration. I enjoy badminton, gaming, exploring cities,
-                            and experiencing diverse food cultures!
-                        </p>
+        <section
+            className="section-root"
+            style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                padding: "clamp(1.5rem, 5vw, 4rem)",
+                paddingTop: "clamp(5rem, 9vw, 7rem)",
+                gap: "clamp(2rem, 5vw, 4rem)",
+                alignItems: "center",
+                overflow: "hidden",
+                position: "relative",
+            }}
+        >
+            {/* Left column */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+                <div>
+                    {/* Mono label */}
+                    <div
+                        style={{
+                            fontFamily: "'JetBrains Mono', monospace",
+                            fontSize: 10,
+                            letterSpacing: "0.5em",
+                            color: "#FF4D00",
+                            textTransform: "uppercase",
+                            marginBottom: "1.5rem",
+                        }}
+                    >
+                        ✦ About Me
                     </div>
+
+                    {/* Display heading */}
+                    <h2
+                        style={{
+                            fontFamily: "'Cabinet Grotesk', sans-serif",
+                            fontWeight: 900,
+                            fontSize: "clamp(2.5rem, 6vw, 6vw)",
+                            lineHeight: 0.95,
+                            letterSpacing: "-0.03em",
+                            margin: 0,
+                        }}
+                    >
+                        <span style={{ color: "white" }}>Head of</span>
+                        <br />
+                        <span
+                            style={{
+                                fontStyle: "italic",
+                                WebkitTextStroke: "1px white",
+                                color: "transparent",
+                            }}
+                        >
+                            Video Editing
+                        </span>
+                    </h2>
                 </div>
 
-                {/* Highlight Cards */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 order-1 lg:order-2">
-                    {highlights.map((item, index) => (
-                        <div
-                            key={index}
-                            className="glass p-6 rounded-2xl flex flex-col items-start gap-4 hover:-translate-y-1 hover:border-primary/30 transition-all duration-300"
-                        >
-                            <div className="p-3 rounded-lg bg-background/50 border border-white/5">
-                                {item.icon}
+                {/* Bio text */}
+                <p
+                    style={{
+                        fontFamily: "'Satoshi', sans-serif",
+                        fontSize: "clamp(1rem, 1.25vw, 1.25rem)",
+                        color: "rgba(255,255,255,0.55)",
+                        lineHeight: 1.75,
+                        maxWidth: "36rem",
+                    }}
+                >
+                    Sophomore Computer Science Engineering student specializing in Data Science
+                    at Manipal Academy of Higher Education, Bengaluru. I lead visual content
+                    production for SideQuest Gaming Club — editing and publishing Instagram reels
+                    that capture the energy of our gaming community.
+                    <br /><br />
+                    Beyond the timeline, I'm proficient in Python, Java and C. I believe the
+                    best stories live at the intersection of logic and creativity.
+                </p>
+
+                {/* Stats row */}
+                <div style={{ display: "flex", gap: "clamp(1.5rem, 4vw, 3rem)" }}>
+                    {stats.map((stat, i) => (
+                        <div key={i}>
+                            <div
+                                style={{
+                                    fontFamily: "'Cabinet Grotesk', sans-serif",
+                                    fontWeight: 900,
+                                    fontSize: "clamp(2rem, 3.5vw, 3.5vw)",
+                                    color: "white",
+                                    lineHeight: 1,
+                                    letterSpacing: "-0.02em",
+                                }}
+                            >
+                                {stat.value}
                             </div>
-                            <div>
-                                <h4 className="font-semibold text-lg text-foreground mb-2">{item.title}</h4>
-                                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                            <div
+                                style={{
+                                    fontFamily: "'JetBrains Mono', monospace",
+                                    fontSize: 10,
+                                    letterSpacing: "0.4em",
+                                    color: "rgba(255,255,255,0.35)",
+                                    textTransform: "uppercase",
+                                    marginTop: "0.4rem",
+                                }}
+                            >
+                                {stat.label}
                             </div>
                         </div>
                     ))}
                 </div>
+            </div>
+
+            {/* Right column — image */}
+            <div
+                data-cursor="hover"
+                style={{
+                    position: "relative",
+                    aspectRatio: "4/5",
+                    borderRadius: "2rem",
+                    overflow: "hidden",
+                    maxHeight: "75vh",
+                    alignSelf: "center",
+                }}
+            >
+                {/* Orange glow bottom-right */}
+                <div
+                    style={{
+                        position: "absolute",
+                        bottom: 0,
+                        right: 0,
+                        width: "60%",
+                        height: "60%",
+                        background: "radial-gradient(ellipse at bottom right, rgba(255,77,0,0.6), transparent 70%)",
+                        filter: "blur(30px)",
+                        zIndex: 0,
+                        pointerEvents: "none",
+                    }}
+                />
+
+                <Image
+                    src="/profile-pic.jpg"
+                    alt="Prateek Tammisetty"
+                    fill
+                    className="about-image"
+                    style={{
+                        objectFit: "cover",
+                        filter: "grayscale(1) contrast(1.05)",
+                        transition: "filter 0.6s cubic-bezier(0.23,1,0.32,1)",
+                        zIndex: 1,
+                    }}
+                    onMouseEnter={e => (e.currentTarget.style.filter = "grayscale(0) contrast(1)")}
+                    onMouseLeave={e => (e.currentTarget.style.filter = "grayscale(1) contrast(1.05)")}
+                />
+
+                {/* Image border overlay */}
+                <div
+                    style={{
+                        position: "absolute",
+                        inset: 0,
+                        borderRadius: "2rem",
+                        border: "1px solid rgba(255,255,255,0.1)",
+                        zIndex: 2,
+                        pointerEvents: "none",
+                    }}
+                />
             </div>
         </section>
     );

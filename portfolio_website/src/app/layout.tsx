@@ -1,33 +1,20 @@
 import type { Metadata } from "next";
-import { Inter, Poppins, JetBrains_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react";
+import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
+  variable: "--font-jetbrains",
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Full-Stack Developer",
-  description: "Personal portfolio showcasing my skills, projects, and professional experience as a software developer.",
-  keywords: ["Software Engineer", "Frontend Developer", "Next.js", "React", "Portfolio"],
+  title: "Prateek Tammisetty — Portfolio",
+  description: "Data Science student & creative video editor. Crafting experiences at the intersection of technology and storytelling.",
+  keywords: ["Portfolio", "Data Science", "Video Editing", "SideQuest", "Manipal", "Prateek Tammisetty"],
   openGraph: {
-    title: "Portfolio | Full-Stack Developer",
-    description: "Personal portfolio showcasing my skills, projects, and professional experience.",
-    url: "https://yourportfolio.com",
-    siteName: "Developer Portfolio",
+    title: "Prateek Tammisetty — Portfolio",
+    description: "Data Science student & creative video editor.",
     type: "website",
   },
 };
@@ -39,11 +26,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body
-        className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} antialiased font-sans bg-background text-foreground`}
-      >
+      <head>
+        {/* Cabinet Grotesk & Satoshi via Fontshare */}
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@900,800,700&f[]=satoshi@400,700&display=swap"
+        />
+      </head>
+      <body className={`${jetbrainsMono.variable}`}>
         {children}
-        <Analytics />
       </body>
     </html>
   );

@@ -1,35 +1,78 @@
-import { Navigation } from "@/components/sections/Navigation";
-import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Skills } from "@/components/sections/Skills";
-import { Projects } from "@/components/sections/Projects";
-import { Contact } from "@/components/sections/Contact";
-import { SlideUp } from "@/components/animations/MotionWrappers";
+"use client";
+
+import { useState, useCallback } from "react";
+
+// Core
+import { GrainOverlay } from "@/components/core/GrainOverlay";
+import { CustomCursor } from "@/components/core/CustomCursor";
+import { MeshBlobs } from "@/components/core/MeshBlobs";
+import { PageLoader } from "@/components/core/PageLoader";
+import { CircularNav } from "@/components/core/CircularNav";
+import { SectionProgress } from "@/components/core/SectionProgress";
+
+// Layout
+import { Header } from "@/components/layout/Header";
+import { SectionContainer } from "@/components/layout/SectionContainer";
+
+// Sections
+import { HeroSection } from "@/components/sections/Hero";
+import { AboutSection } from "@/components/sections/About";
+import { WorkSection } from "@/components/sections/Projects";
+import { ContactSection } from "@/components/sections/Contact";
+
+const TOTAL_SECTIONS = 4;
 
 export default function Home() {
+  const [loaded, setLoaded] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
+
+  const handleLoaderComplete = useCallback(() => setLoaded(true), []);
+  const handleNavigate = useCallback((index: number) => setCurrentSection(index), []);
+
   return (
-    <div className="min-h-screen selection:bg-primary/30 selection:text-primary">
-      <Navigation />
+    <>
+      {/* Grain texture */}
+      <GrainOverlay />
 
-      {/* Dynamic Background */}
-      <div className="fixed inset-0 -z-10 bg-[#0F172A]">
-        {/* Subtle gradients matching the Tech Stack doc for depth */}
-        <div className="absolute top-0 left-0 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-primary/20 blur-[120px] rounded-full mix-blend-screen opacity-50 translate-y-[-50%] translate-x-[-20%]"></div>
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] md:w-[800px] md:h-[800px] bg-secondary/10 blur-[120px] rounded-full mix-blend-screen opacity-50 translate-x-[20%] translate-y-[20%]"></div>
-      </div>
+      {/* Custom magnetic cursor */}
+      <CustomCursor />
 
-      {/* Main Container - 12 Column Grid Base inherited by sections */}
-      <main className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10 flex flex-col gap-16 md:gap-24 overflow-hidden">
-        <Hero />
-        <SlideUp><About /></SlideUp>
-        <SlideUp><Skills /></SlideUp>
-        <SlideUp><Projects /></SlideUp>
-        <SlideUp><Contact /></SlideUp>
-      </main>
+      {/* Background mesh blobs */}
+      <MeshBlobs />
 
-      <footer className="py-8 text-center text-muted-foreground text-sm border-t border-white/5 mt-20 relative z-10 bg-background/50 backdrop-blur-md">
-        <p>© {new Date().getFullYear()} Designed & Built with Next.js, Tailwind CSS, & shadcn/ui.</p>
-      </footer>
-    </div>
+      {/* Page loader — renders until loaded */}
+      {!loaded && <PageLoader onComplete={handleLoaderComplete} />}
+
+      {/* Main app — visible after loader */}
+      {loaded && (
+        <>
+          {/* Fixed header */}
+          <Header onMenuOpen={() => setNavOpen(true)} />
+
+          {/* Circular nav overlay */}
+          <CircularNav
+            isOpen={navOpen}
+            onClose={() => setNavOpen(false)}
+            onNavigate={handleNavigate}
+            currentSection={currentSection}
+          />
+
+          {/* Section progress indicator */}
+          <SectionProgress current={currentSection} total={TOTAL_SECTIONS} />
+
+          {/* Main section transition container */}
+          <SectionContainer
+            currentIndex={currentSection}
+            onIndexChange={setCurrentSection}
+          >
+            <HeroSection onNext={() => setCurrentSection(1)} />
+            <AboutSection />
+            <WorkSection />
+            <ContactSection />
+          </SectionContainer>
+        </>
+      )}
+    </>
   );
 }
