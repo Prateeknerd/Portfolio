@@ -18,13 +18,17 @@ export function AboutSection() {
                 flexWrap: "wrap",
                 padding: "clamp(1.5rem, 5vw, 4rem)",
                 paddingTop: "clamp(5rem, 9vw, 7rem)",
-                gap: "clamp(1rem, 2.5vw, 2rem)",
+                gap: "clamp(2rem, 5vw, 4rem)",
                 alignItems: "flex-start",
+                justifyContent: "space-between",
                 overflow: "hidden",
+                maxWidth: "75rem",
+                margin: "0 auto",
+                width: "100%",
             }}
         >
             {/* Left */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "2.25rem", flex: "1 1 36rem", maxWidth: "42rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "2.25rem", flex: "1 1 36rem", maxWidth: "40rem" }}>
                 <div>
                     <div style={{
                         fontFamily: "'JetBrains Mono', monospace",
@@ -170,7 +174,7 @@ export function AboutSection() {
                     borderRadius: "2rem",
                     overflow: "hidden",
                     flex: "1 1 20rem",
-                    maxWidth: "24rem",
+                    maxWidth: "28rem",
                     marginTop: "calc(10px + 1.5rem)",
                 }}
             >
