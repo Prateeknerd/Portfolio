@@ -18,8 +18,8 @@ export function AboutSection() {
                 gridTemplateColumns: "1fr 1fr",
                 padding: "clamp(1.5rem, 5vw, 4rem)",
                 paddingTop: "clamp(5rem, 9vw, 7rem)",
-                gap: "clamp(2rem, 5vw, 4rem)",
-                alignItems: "center",
+                gap: "clamp(1.5rem, 5vw, 4rem)",
+                alignItems: "start",
                 overflow: "hidden",
             }}
         >
@@ -169,11 +169,8 @@ export function AboutSection() {
                     aspectRatio: "4/5",
                     borderRadius: "2rem",
                     overflow: "hidden",
-                    maxHeight: "75vh",
-                    maxWidth: "28rem",
                     width: "100%",
-                    alignSelf: "center",
-                    justifySelf: "flex-start",
+                    marginTop: "calc(10px + 1.5rem)",
                 }}
             >
                 {/* Teal glow */}
