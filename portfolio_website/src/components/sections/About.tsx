@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Download } from "lucide-react";
 
 export function AboutSection() {
     const stats = [
@@ -72,6 +73,45 @@ export function AboutSection() {
                     Outside of academics, I serve as Video Editing Head for SideQuest Gaming Club —
                     creating motion-edited reels that bring the community&apos;s energy to life.
                 </p>
+
+                {/* Resume Button */}
+                <div>
+                    <a
+                        href="/resume.pdf"
+                        download="Prateek_Tammisetty_Resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-cursor="hover"
+                        style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "0.75rem",
+                            background: "rgba(0,229,204,0.1)",
+                            border: "1px solid rgba(0,229,204,0.25)",
+                            padding: "0.75rem 1.25rem",
+                            borderRadius: "0.5rem",
+                            color: "#00E5CC",
+                            textDecoration: "none",
+                            fontFamily: "'JetBrains Mono', monospace",
+                            fontSize: 11,
+                            letterSpacing: "0.2em",
+                            textTransform: "uppercase",
+                            cursor: "none",
+                            transition: "background 0.3s, transform 0.3s",
+                        }}
+                        onMouseEnter={e => {
+                            (e.currentTarget as HTMLElement).style.background = "rgba(0,229,204,0.2)";
+                            (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                        }}
+                        onMouseLeave={e => {
+                            (e.currentTarget as HTMLElement).style.background = "rgba(0,229,204,0.1)";
+                            (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
+                        }}
+                    >
+                        <span>Download Resume</span>
+                        <Download size={16} />
+                    </a>
+                </div>
 
                 {/* Stats */}
                 <div style={{ display: "flex", gap: "clamp(1.5rem, 4vw, 3rem)" }}>
