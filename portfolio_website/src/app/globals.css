@@ -2,16 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Cinematic Maximalist Design System ─── */
+/* ─── Modern Dark Aesthetic Design System ─── */
 
 :root {
-  --bg: #080808;
-  --accent: #FF4D00;
-  --accent-dim: #B22222;
-  --accent-warm: #FF8C00;
-  --fg: #ffffff;
-  --fg-muted: rgba(255, 255, 255, 0.45);
-  --fg-subtle: rgba(255, 255, 255, 0.1);
+  --bg: #080C14;
+  --bg-2: #0D1321;
+  --accent: #7C3AED;
+  /* Violet */
+  --accent-glow: rgba(124, 58, 237, 0.35);
+  --accent-2: #06B6D4;
+  /* Cyan */
+  --accent-3: #A78BFA;
+  /* Soft Lavender */
+  --fg: #F1F5F9;
+  --fg-muted: rgba(241, 245, 249, 0.45);
+  --fg-subtle: rgba(241, 245, 249, 0.08);
   --ease-cinematic: cubic-bezier(0.23, 1, 0.32, 1);
   --font-display: 'Cabinet Grotesk', sans-serif;
   --font-body: 'Satoshi', sans-serif;
@@ -55,10 +60,8 @@ body {
   height: 12px;
   border-radius: 50%;
   background: var(--fg);
-  mix-blend-mode: difference;
   pointer-events: none;
   z-index: 9999;
-  transform: translate(-50%, -50%);
   transition: width 0.25s var(--ease-cinematic),
     height 0.25s var(--ease-cinematic),
     background 0.25s var(--ease-cinematic);
@@ -66,9 +69,10 @@ body {
 }
 
 #custom-cursor.hovering {
-  width: 72px;
-  height: 72px;
-  background: white;
+  width: 48px;
+  height: 48px;
+  background: rgba(124, 58, 237, 0.4);
+  border: 1px solid rgba(124, 58, 237, 0.8);
 }
 
 /* ─── Grain Overlay ─── */
@@ -79,7 +83,7 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.05;
+  opacity: 0.04;
   animation: grain-shift 0.8s steps(5) infinite;
 }
 
@@ -114,12 +118,12 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  mix-blend-mode: soft-light;
+  mix-blend-mode: normal;
   pointer-events: none;
   will-change: transform;
 }
 
-/* ─── Typography Utilities ─── */
+/* ─── Typography ─── */
 .font-display {
   font-family: var(--font-display);
   font-weight: 900;
@@ -133,9 +137,8 @@ body {
   font-family: var(--font-mono);
 }
 
-/* Outline text (cabinet grotesk display) */
 .text-outline {
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px var(--fg);
   color: transparent;
 }
 
@@ -144,17 +147,17 @@ body {
   color: transparent;
 }
 
-/* Hover fill for large contact text */
+/* Hover fill for contact section large text */
 .text-outline-hover-fill {
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px rgba(241, 245, 249, 0.6);
   color: transparent;
   transition: color 0.4s var(--ease-cinematic),
     -webkit-text-stroke-color 0.4s var(--ease-cinematic);
 }
 
 .text-outline-hover-fill:hover {
-  color: var(--accent);
-  -webkit-text-stroke-color: var(--accent);
+  color: var(--accent-3);
+  -webkit-text-stroke-color: var(--accent-3);
 }
 
 /* ─── Scrollbar hidden ─── */
@@ -175,11 +178,11 @@ body {
   gap: 2rem;
 }
 
-/* ─── Circular Nav Overlay ─── */
+/* ─── Circular Nav ─── */
 #circular-nav {
   position: fixed;
   inset: 0;
-  background: #080808;
+  background: var(--bg-2);
   z-index: 1000;
   clip-path: circle(0% at 95% 5%);
   transition: clip-path 0.8s var(--ease-cinematic);
@@ -193,10 +196,18 @@ body {
   clip-path: circle(150% at 95% 5%);
 }
 
-/* ─── Section container ─── */
+/* ─── Section root ─── */
 .section-root {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+/* ─── Cursor reaction background ─── */
+#cursor-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
 }

@@ -11,24 +11,23 @@ interface SectionContainerProps {
 
 const EASE = [0.23, 1, 0.32, 1] as const;
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const sectionVariants: Variants = {
     enter: (direction: number) => ({
-        y: direction > 0 ? "100%" : "-100%",
+        y: direction > 0 ? "6%" : "-6%",
         opacity: 0,
-        scale: 0.96,
+        scale: 0.98,
     }),
     center: {
         y: "0%",
         opacity: 1,
         scale: 1,
-        transition: { duration: 0.85, ease: EASE },
+        transition: { duration: 0.6, ease: EASE },
     },
     exit: (direction: number) => ({
-        y: direction > 0 ? "-100%" : "100%",
+        y: direction > 0 ? "-6%" : "6%",
         opacity: 0,
-        scale: 0.96,
-        transition: { duration: 0.65, ease: EASE },
+        scale: 0.98,
+        transition: { duration: 0.4, ease: EASE },
     }),
 };
 
@@ -42,7 +41,7 @@ export function SectionContainer({ children, currentIndex, onIndexChange }: Sect
         setDirection(newIndex > currentIndex ? 1 : -1);
         setIsTransitioning(true);
         onIndexChange(newIndex);
-        setTimeout(() => setIsTransitioning(false), 900);
+        setTimeout(() => setIsTransitioning(false), 700);
     }, [isTransitioning, currentIndex, total, onIndexChange]);
 
     useEffect(() => {
@@ -50,13 +49,12 @@ export function SectionContainer({ children, currentIndex, onIndexChange }: Sect
         const handleWheel = (e: WheelEvent) => {
             e.preventDefault();
             const now = Date.now();
-            if (now - lastWheelTime < 1000) return;
+            if (now - lastWheelTime < 900) return;
             lastWheelTime = now;
             if (e.deltaY > 0) navigate(currentIndex + 1);
             else navigate(currentIndex - 1);
         };
 
-        // Touch support
         let touchStartY = 0;
         const handleTouchStart = (e: TouchEvent) => { touchStartY = e.touches[0].clientY; };
         const handleTouchEnd = (e: TouchEvent) => {
@@ -80,7 +78,8 @@ export function SectionContainer({ children, currentIndex, onIndexChange }: Sect
 
     return (
         <div style={{ position: "fixed", inset: 0, overflow: "hidden" }}>
-            <AnimatePresence mode="wait" custom={direction}>
+            {/* Use mode="sync" so both sections animate simultaneously — no blank gap */}
+            <AnimatePresence mode="sync" custom={direction}>
                 <motion.div
                     key={currentIndex}
                     custom={direction}

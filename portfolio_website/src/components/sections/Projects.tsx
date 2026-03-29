@@ -2,19 +2,22 @@
 
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 const WORK_ITEMS = [
     {
         title: "SideQuest Reel I",
-        category: "VIDEO EDITING",
+        category: "MOTION DESIGN",
         link: "https://www.instagram.com/p/DQO7nSMjIFL/",
-        bg: "#1a0a00",
+        thumb: "/reel1-thumb.png",
+        year: "2025",
     },
     {
         title: "SideQuest Reel II",
-        category: "MOTION GRAPHICS",
+        category: "VIDEO EDITING",
         link: "https://www.instagram.com/p/DTpR-I1k97D/",
-        bg: "#120000",
+        thumb: "/reel2-thumb.png",
+        year: "2025",
     },
 ];
 
@@ -31,7 +34,7 @@ export function WorkSection() {
                 paddingTop: "clamp(5rem, 9vw, 7rem)",
                 overflow: "hidden",
                 position: "relative",
-                gap: "clamp(1.5rem, 3vw, 2.5rem)",
+                gap: "clamp(1.5rem, 2.5vw, 2rem)",
             }}
         >
             {/* Section title */}
@@ -43,7 +46,7 @@ export function WorkSection() {
                         fontSize: "clamp(3.5rem, 9vw, 9vw)",
                         lineHeight: 0.9,
                         letterSpacing: "-0.03em",
-                        color: "white",
+                        color: "#F1F5F9",
                         margin: 0,
                     }}
                 >
@@ -52,7 +55,7 @@ export function WorkSection() {
                     <span
                         style={{
                             fontStyle: "italic",
-                            WebkitTextStroke: "1px white",
+                            WebkitTextStroke: "1px rgba(167,139,250,0.6)",
                             color: "transparent",
                         }}
                     >
@@ -64,12 +67,12 @@ export function WorkSection() {
                         fontFamily: "'JetBrains Mono', monospace",
                         fontSize: 10,
                         letterSpacing: "0.5em",
-                        color: "rgba(255,255,255,0.3)",
+                        color: "rgba(241,245,249,0.25)",
                         textTransform: "uppercase",
                         paddingBottom: "0.5rem",
                     }}
                 >
-                    ✦ Selected Projects
+                    ✦ Creative Projects
                 </div>
             </div>
 
@@ -78,7 +81,7 @@ export function WorkSection() {
                 style={{
                     display: "grid",
                     gridTemplateColumns: "1fr 1fr",
-                    gap: "1.5rem",
+                    gap: "1.25rem",
                     flex: 1,
                     minHeight: 0,
                 }}
@@ -95,93 +98,101 @@ export function WorkSection() {
                         style={{
                             display: "block",
                             borderRadius: "1.5rem",
-                            border: "1px solid rgba(255,255,255,0.1)",
-                            background: item.bg,
+                            border: `1px solid ${hoveredIndex === i ? "rgba(124,58,237,0.4)" : "rgba(241,245,249,0.08)"}`,
                             overflow: "hidden",
                             position: "relative",
                             aspectRatio: "16 / 9",
                             textDecoration: "none",
                             cursor: "none",
-                            transition: "border-color 0.4s",
-                            borderColor: hoveredIndex === i ? "rgba(255,77,0,0.5)" : "rgba(255,255,255,0.1)",
+                            transition: "border-color 0.4s, transform 0.4s cubic-bezier(0.23,1,0.32,1)",
+                            transform: hoveredIndex === i ? "scale(1.01)" : "scale(1)",
                         }}
                     >
-                        {/* Background gradient */}
-                        <div
+                        {/* Thumbnail image */}
+                        <Image
+                            src={item.thumb}
+                            alt={item.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             style={{
-                                position: "absolute",
-                                inset: 0,
-                                background: `radial-gradient(ellipse at 60% 50%, rgba(255,77,0,0.15), transparent 70%)`,
-                                transition: "opacity 0.4s",
-                                opacity: hoveredIndex === i ? 1 : 0.4,
+                                objectFit: "cover",
+                                transition: "transform 0.6s cubic-bezier(0.23,1,0.32,1)",
+                                transform: hoveredIndex === i ? "scale(1.04)" : "scale(1)",
                             }}
                         />
 
-                        {/* Hover overlay */}
+                        {/* Always-visible dark gradient at bottom for text legibility */}
+                        <div
+                            style={{
+                                position: "absolute",
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                height: "50%",
+                                background: "linear-gradient(to top, rgba(8,12,20,0.9) 0%, transparent 100%)",
+                                zIndex: 1,
+                            }}
+                        />
+
+                        {/* Hover tint */}
                         <div
                             style={{
                                 position: "absolute",
                                 inset: 0,
-                                background: "rgba(0,0,0,0.4)",
+                                background: "rgba(8,12,20,0.5)",
                                 opacity: hoveredIndex === i ? 1 : 0,
-                                transition: "opacity 0.4s cubic-bezier(0.23,1,0.32,1)",
-                                display: "flex",
-                                flexDirection: "column",
-                                justifyContent: "flex-end",
-                                padding: "2rem",
-                                gap: "0.5rem",
+                                transition: "opacity 0.4s",
                                 zIndex: 2,
                             }}
-                        >
-                            <div
-                                style={{
-                                    fontFamily: "'JetBrains Mono', monospace",
-                                    fontSize: 10,
-                                    letterSpacing: "0.5em",
-                                    color: "#FF4D00",
-                                    textTransform: "uppercase",
-                                }}
-                            >
-                                {item.category}
-                            </div>
-                            <div
-                                style={{
-                                    fontFamily: "'Cabinet Grotesk', sans-serif",
-                                    fontWeight: 900,
-                                    fontSize: "clamp(1.5rem, 2.5vw, 2.5vw)",
-                                    color: "white",
-                                    letterSpacing: "-0.02em",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "0.75rem",
-                                }}
-                            >
-                                {item.title}
-                                <ExternalLink size={18} strokeWidth={1.5} />
-                            </div>
-                        </div>
+                        />
 
-                        {/* Resting state label */}
+                        {/* Info — always visible */}
                         <div
                             style={{
                                 position: "absolute",
                                 bottom: "1.5rem",
                                 left: "1.5rem",
-                                opacity: hoveredIndex === i ? 0 : 1,
-                                transition: "opacity 0.3s",
-                                zIndex: 1,
+                                right: "1.5rem",
+                                zIndex: 3,
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "flex-end",
                             }}
                         >
+                            <div>
+                                <div
+                                    style={{
+                                        fontFamily: "'JetBrains Mono', monospace",
+                                        fontSize: 10,
+                                        letterSpacing: "0.45em",
+                                        color: "#A78BFA",
+                                        textTransform: "uppercase",
+                                        marginBottom: "0.35rem",
+                                    }}
+                                >
+                                    {item.category} — {item.year}
+                                </div>
+                                <div
+                                    style={{
+                                        fontFamily: "'Cabinet Grotesk', sans-serif",
+                                        fontWeight: 900,
+                                        fontSize: "clamp(1.25rem, 2vw, 2vw)",
+                                        color: "#F1F5F9",
+                                        letterSpacing: "-0.02em",
+                                    }}
+                                >
+                                    {item.title}
+                                </div>
+                            </div>
+
                             <div
                                 style={{
-                                    fontFamily: "'JetBrains Mono', monospace",
-                                    fontSize: 10,
-                                    letterSpacing: "0.4em",
-                                    color: "rgba(255,255,255,0.3)",
-                                    textTransform: "uppercase",
+                                    opacity: hoveredIndex === i ? 1 : 0,
+                                    transform: hoveredIndex === i ? "translateY(0)" : "translateY(6px)",
+                                    transition: "opacity 0.3s, transform 0.3s",
                                 }}
                             >
-                                {item.category}
+                                <ExternalLink size={20} color="#A78BFA" strokeWidth={1.5} />
                             </div>
                         </div>
                     </a>

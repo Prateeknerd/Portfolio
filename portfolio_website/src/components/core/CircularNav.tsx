@@ -69,8 +69,8 @@ export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: Cir
                     backdropFilter: "blur(20px)",
                 }}
                 onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(255,77,0,0.2)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "#FF4D00";
+                    (e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.2)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "#7C3AED";
                 }}
                 onMouseLeave={e => {
                     (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)";
@@ -104,8 +104,8 @@ export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: Cir
                             fontWeight: 900,
                             fontSize: "clamp(3.5rem, 8vw, 8rem)",
                             lineHeight: 1.05,
-                            WebkitTextStroke: hoveredIndex === i ? "0px" : "1px white",
-                            color: hoveredIndex === i ? "#FF4D00" : "transparent",
+                            WebkitTextStroke: hoveredIndex === i ? "0px" : "1px rgba(241,245,249,0.5)",
+                            color: hoveredIndex === i ? "#A78BFA" : "transparent",
                             transform: hoveredIndex === i ? "translateX(20px)" : "translateX(0)",
                             transition: "color 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s cubic-bezier(0.23,1,0.32,1), -webkit-text-stroke 0.35s",
                             opacity: isOpen ? 1 : 0,

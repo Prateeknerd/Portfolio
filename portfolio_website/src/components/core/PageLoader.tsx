@@ -11,15 +11,15 @@ export function PageLoader({ onComplete }: PageLoaderProps) {
     const [visible, setVisible] = useState(true);
 
     const statusMessages = [
-        "INITIALIZING SYSTEM...",
+        "BOOTING SYSTEM...",
         "LOADING ASSETS...",
-        "CALIBRATING ENVIRONMENT...",
-        "RENDERING EXPERIENCE...",
+        "CALIBRATING VIEW...",
+        "ALMOST THERE...",
         "READY.",
     ];
 
     useEffect(() => {
-        const duration = 2200;
+        const duration = 2000;
         const start = performance.now();
 
         const tick = (now: number) => {
@@ -32,8 +32,8 @@ export function PageLoader({ onComplete }: PageLoaderProps) {
             } else {
                 setTimeout(() => {
                     setVisible(false);
-                    setTimeout(onComplete, 600);
-                }, 300);
+                    setTimeout(onComplete, 500);
+                }, 200);
             }
         };
 
@@ -46,30 +46,28 @@ export function PageLoader({ onComplete }: PageLoaderProps) {
 
     return (
         <div
-            id="page-loader"
             style={{
                 position: "fixed",
                 inset: 0,
-                background: "#080808",
+                background: "#080C14",
                 zIndex: 10000,
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                gap: "3rem",
-                transition: "opacity 0.6s cubic-bezier(0.23,1,0.32,1)",
+                gap: "2.5rem",
             }}
         >
-            {/* Glowing Orb */}
+            {/* Glowing orb — violet/cyan */}
             <div
                 style={{
                     position: "absolute",
-                    width: 256,
-                    height: 256,
+                    width: 280,
+                    height: 280,
                     borderRadius: "50%",
-                    background: "radial-gradient(circle, #FF4D00, #B22222)",
-                    filter: "blur(50px)",
-                    opacity: 0.5,
+                    background: "radial-gradient(circle, #7C3AED, #06B6D4)",
+                    filter: "blur(55px)",
+                    opacity: 0.35,
                     animation: "pulse-orb 2s ease-in-out infinite",
                 }}
             />
@@ -80,7 +78,7 @@ export function PageLoader({ onComplete }: PageLoaderProps) {
                     fontFamily: "'Cabinet Grotesk', sans-serif",
                     fontWeight: 900,
                     fontSize: "clamp(6rem, 15vw, 12rem)",
-                    color: "white",
+                    color: "#F1F5F9",
                     lineHeight: 1,
                     position: "relative",
                     zIndex: 1,
@@ -94,9 +92,9 @@ export function PageLoader({ onComplete }: PageLoaderProps) {
             <div
                 style={{
                     fontFamily: "'JetBrains Mono', monospace",
-                    fontSize: "10px",
+                    fontSize: 10,
                     letterSpacing: "0.5em",
-                    color: "rgba(255,255,255,0.4)",
+                    color: "rgba(241,245,249,0.35)",
                     position: "relative",
                     zIndex: 1,
                     textTransform: "uppercase",
@@ -108,7 +106,7 @@ export function PageLoader({ onComplete }: PageLoaderProps) {
             <style>{`
         @keyframes pulse-orb {
           0%, 100% { transform: scale(1); filter: blur(40px); }
-          50%       { transform: scale(1.5); filter: blur(60px); }
+          50%       { transform: scale(1.4); filter: blur(65px); }
         }
       `}</style>
         </div>

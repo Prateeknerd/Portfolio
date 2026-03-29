@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export function AboutSection() {
     const stats = [
-        { value: "2+", label: "Years Editing" },
-        { value: "20+", label: "Reels Published" },
-        { value: "CSE", label: "Data Science" },
+        { value: "2+", label: "Years Coding" },
+        { value: "3", label: "Languages" },
+        { value: "B.Tech", label: "CSE-DS" },
     ];
 
     return (
@@ -26,13 +26,12 @@ export function AboutSection() {
             {/* Left column */}
             <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
                 <div>
-                    {/* Mono label */}
                     <div
                         style={{
                             fontFamily: "'JetBrains Mono', monospace",
                             fontSize: 10,
                             letterSpacing: "0.5em",
-                            color: "#FF4D00",
+                            color: "#7C3AED",
                             textTransform: "uppercase",
                             marginBottom: "1.5rem",
                         }}
@@ -40,7 +39,6 @@ export function AboutSection() {
                         ✦ About Me
                     </div>
 
-                    {/* Display heading */}
                     <h2
                         style={{
                             fontFamily: "'Cabinet Grotesk', sans-serif",
@@ -51,37 +49,35 @@ export function AboutSection() {
                             margin: 0,
                         }}
                     >
-                        <span style={{ color: "white" }}>Head of</span>
+                        <span style={{ color: "#F1F5F9" }}>CS Student</span>
                         <br />
                         <span
                             style={{
                                 fontStyle: "italic",
-                                WebkitTextStroke: "1px white",
+                                WebkitTextStroke: "1px rgba(167,139,250,0.7)",
                                 color: "transparent",
                             }}
                         >
-                            Video Editing
+                            Data Science
                         </span>
                     </h2>
                 </div>
 
-                {/* Bio text */}
                 <p
                     style={{
                         fontFamily: "'Satoshi', sans-serif",
-                        fontSize: "clamp(1rem, 1.25vw, 1.25rem)",
-                        color: "rgba(255,255,255,0.55)",
+                        fontSize: "clamp(0.95rem, 1.15vw, 1.15rem)",
+                        color: "rgba(241,245,249,0.55)",
                         lineHeight: 1.75,
                         maxWidth: "36rem",
                     }}
                 >
                     Sophomore Computer Science Engineering student specializing in Data Science
-                    at Manipal Academy of Higher Education, Bengaluru. I lead visual content
-                    production for SideQuest Gaming Club — editing and publishing Instagram reels
-                    that capture the energy of our gaming community.
+                    at Manipal Academy of Higher Education, Bengaluru. I build with Python, Java,
+                    and C — analyzing data, building algorithms, and exploring ML fundamentals.
                     <br /><br />
-                    Beyond the timeline, I'm proficient in Python, Java and C. I believe the
-                    best stories live at the intersection of logic and creativity.
+                    Outside of academics, I lead the video content production for SideQuest Gaming
+                    Club, applying the same systematic thinking to creative storytelling.
                 </p>
 
                 {/* Stats row */}
@@ -93,7 +89,7 @@ export function AboutSection() {
                                     fontFamily: "'Cabinet Grotesk', sans-serif",
                                     fontWeight: 900,
                                     fontSize: "clamp(2rem, 3.5vw, 3.5vw)",
-                                    color: "white",
+                                    color: "#F1F5F9",
                                     lineHeight: 1,
                                     letterSpacing: "-0.02em",
                                 }}
@@ -105,7 +101,7 @@ export function AboutSection() {
                                     fontFamily: "'JetBrains Mono', monospace",
                                     fontSize: 10,
                                     letterSpacing: "0.4em",
-                                    color: "rgba(255,255,255,0.35)",
+                                    color: "rgba(241,245,249,0.3)",
                                     textTransform: "uppercase",
                                     marginTop: "0.4rem",
                                 }}
@@ -115,9 +111,31 @@ export function AboutSection() {
                         </div>
                     ))}
                 </div>
+
+                {/* Skills strip */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+                    {["Python", "Java", "C", "Data Science", "Pandas", "SQL", "DaVinci Resolve"].map(skill => (
+                        <span
+                            key={skill}
+                            style={{
+                                fontFamily: "'JetBrains Mono', monospace",
+                                fontSize: 10,
+                                letterSpacing: "0.2em",
+                                color: "rgba(167,139,250,0.8)",
+                                background: "rgba(124,58,237,0.12)",
+                                border: "1px solid rgba(124,58,237,0.2)",
+                                borderRadius: "0.4rem",
+                                padding: "0.3rem 0.65rem",
+                                textTransform: "uppercase",
+                            }}
+                        >
+                            {skill}
+                        </span>
+                    ))}
+                </div>
             </div>
 
-            {/* Right column — image */}
+            {/* Right column — image, NO grayscale or hover filter */}
             <div
                 data-cursor="hover"
                 style={{
@@ -129,7 +147,7 @@ export function AboutSection() {
                     alignSelf: "center",
                 }}
             >
-                {/* Orange glow bottom-right */}
+                {/* Violet glow bottom-right */}
                 <div
                     style={{
                         position: "absolute",
@@ -137,7 +155,7 @@ export function AboutSection() {
                         right: 0,
                         width: "60%",
                         height: "60%",
-                        background: "radial-gradient(ellipse at bottom right, rgba(255,77,0,0.6), transparent 70%)",
+                        background: "radial-gradient(ellipse at bottom right, rgba(124,58,237,0.55), transparent 70%)",
                         filter: "blur(30px)",
                         zIndex: 0,
                         pointerEvents: "none",
@@ -148,24 +166,20 @@ export function AboutSection() {
                     src="/profile-pic.jpg"
                     alt="Prateek Tammisetty"
                     fill
-                    className="about-image"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     style={{
                         objectFit: "cover",
-                        filter: "grayscale(1) contrast(1.05)",
-                        transition: "filter 0.6s cubic-bezier(0.23,1,0.32,1)",
                         zIndex: 1,
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.filter = "grayscale(0) contrast(1)")}
-                    onMouseLeave={e => (e.currentTarget.style.filter = "grayscale(1) contrast(1.05)")}
                 />
 
-                {/* Image border overlay */}
+                {/* Subtle vignette border overlay */}
                 <div
                     style={{
                         position: "absolute",
                         inset: 0,
                         borderRadius: "2rem",
-                        border: "1px solid rgba(255,255,255,0.1)",
+                        border: "1px solid rgba(124,58,237,0.25)",
                         zIndex: 2,
                         pointerEvents: "none",
                     }}

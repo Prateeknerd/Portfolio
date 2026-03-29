@@ -29,23 +29,23 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 11,
                     letterSpacing: "0.5em",
-                    color: "#FF4D00",
+                    color: "#7C3AED",
                     textTransform: "uppercase",
                 }}
             >
-                ✦ Data Science & Creative Media — 2026
+                ✦ CSE / Data Science — Manipal 2026
             </div>
 
             {/* Main hero text */}
             <div style={{ position: "relative", zIndex: 10 }}>
-                {/* Line 1 — solid */}
+                {/* Solid line */}
                 <h1
                     style={{
                         fontFamily: "'Cabinet Grotesk', sans-serif",
                         fontWeight: 900,
                         fontSize: "clamp(4rem, 14vw, 14vw)",
                         lineHeight: 0.92,
-                        color: "white",
+                        color: "#F1F5F9",
                         letterSpacing: "-0.03em",
                         margin: 0,
                     }}
@@ -53,14 +53,13 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                     Prateek
                 </h1>
 
-                {/* Line 2 — italic outline with mesh blob behind */}
+                {/* Italic outline with violet depth blob */}
                 <div style={{ position: "relative", display: "inline-block" }}>
-                    {/* Depth blob behind outline text */}
                     <div
                         style={{
                             position: "absolute",
                             inset: "-20% -10%",
-                            background: "radial-gradient(ellipse, rgba(255,77,0,0.35) 0%, transparent 70%)",
+                            background: "radial-gradient(ellipse, rgba(124,58,237,0.3) 0%, transparent 70%)",
                             filter: "blur(40px)",
                             pointerEvents: "none",
                             zIndex: 0,
@@ -73,7 +72,7 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                             fontSize: "clamp(4rem, 14vw, 14vw)",
                             lineHeight: 0.92,
                             fontStyle: "italic",
-                            WebkitTextStroke: "1px white",
+                            WebkitTextStroke: "1px rgba(167,139,250,0.6)",
                             color: "transparent",
                             letterSpacing: "-0.03em",
                             margin: 0,
@@ -86,7 +85,7 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                 </div>
             </div>
 
-            {/* Footer descriptor */}
+            {/* Footer row */}
             <div
                 style={{
                     position: "absolute",
@@ -101,18 +100,17 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                 <p
                     style={{
                         fontFamily: "'Satoshi', sans-serif",
-                        fontSize: "clamp(1rem, 1.5vw, 1.5rem)",
-                        color: "rgba(255,255,255,0.55)",
-                        maxWidth: "28rem",
-                        lineHeight: 1.6,
+                        fontSize: "clamp(1rem, 1.4vw, 1.4rem)",
+                        color: "rgba(241,245,249,0.45)",
+                        maxWidth: "32rem",
+                        lineHeight: 1.65,
                         margin: 0,
                     }}
                 >
-                    Sophomore CS student specializing in Data Science.
-                    Video Editing Head @ SideQuest Gaming Club.
+                    Computer Science student specialising in Data Science.
+                    Building with Python, Java & C — and occasionally a timeline.
                 </p>
 
-                {/* Scroll down cue */}
                 <button
                     onClick={onNext}
                     data-cursor="hover"
@@ -123,15 +121,15 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                         background: "none",
                         border: "none",
                         cursor: "none",
-                        color: "rgba(255,255,255,0.4)",
+                        color: "rgba(241,245,249,0.3)",
                         fontFamily: "'JetBrains Mono', monospace",
                         fontSize: 10,
                         letterSpacing: "0.4em",
                         textTransform: "uppercase",
                         transition: "color 0.3s",
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "#FF4D00")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "#A78BFA")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(241,245,249,0.3)")}
                 >
                     SCROLL
                     <ArrowDown size={14} />
