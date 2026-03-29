@@ -14,17 +14,17 @@ export function AboutSection() {
         <section
             className="section-root"
             style={{
-                display: "grid",
-                gridTemplateColumns: "1fr min(100%, 24rem)",
+                display: "flex",
+                flexWrap: "wrap",
                 padding: "clamp(1.5rem, 5vw, 4rem)",
                 paddingTop: "clamp(5rem, 9vw, 7rem)",
                 gap: "clamp(1rem, 2.5vw, 2rem)",
-                alignItems: "start",
+                alignItems: "flex-start",
                 overflow: "hidden",
             }}
         >
             {/* Left */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "2.25rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "2.25rem", flex: "1 1 36rem", maxWidth: "42rem" }}>
                 <div>
                     <div style={{
                         fontFamily: "'JetBrains Mono', monospace",
@@ -169,7 +169,8 @@ export function AboutSection() {
                     aspectRatio: "4/5",
                     borderRadius: "2rem",
                     overflow: "hidden",
-                    width: "100%",
+                    flex: "1 1 20rem",
+                    maxWidth: "24rem",
                     marginTop: "calc(10px + 1.5rem)",
                 }}
             >
