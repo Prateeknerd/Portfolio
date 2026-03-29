@@ -5,8 +5,8 @@ import Image from "next/image";
 export function AboutSection() {
     const stats = [
         { value: "2+", label: "Years Coding" },
-        { value: "3", label: "Languages" },
-        { value: "B.Tech", label: "CSE-DS" },
+        { value: "CSE-DS", label: "Specialisation" },
+        { value: "MAHE", label: "University" },
     ];
 
     return (
@@ -20,122 +20,108 @@ export function AboutSection() {
                 gap: "clamp(2rem, 5vw, 4rem)",
                 alignItems: "center",
                 overflow: "hidden",
-                position: "relative",
             }}
         >
-            {/* Left column */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "2.5rem" }}>
+            {/* Left */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "2.25rem" }}>
                 <div>
-                    <div
-                        style={{
-                            fontFamily: "'JetBrains Mono', monospace",
-                            fontSize: 10,
-                            letterSpacing: "0.5em",
-                            color: "#7C3AED",
-                            textTransform: "uppercase",
-                            marginBottom: "1.5rem",
-                        }}
-                    >
+                    <div style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontSize: 10,
+                        letterSpacing: "0.5em",
+                        color: "#00E5CC",
+                        textTransform: "uppercase",
+                        marginBottom: "1.5rem",
+                    }}>
                         ✦ About Me
                     </div>
 
-                    <h2
-                        style={{
-                            fontFamily: "'Cabinet Grotesk', sans-serif",
-                            fontWeight: 900,
-                            fontSize: "clamp(2.5rem, 6vw, 6vw)",
-                            lineHeight: 0.95,
-                            letterSpacing: "-0.03em",
-                            margin: 0,
-                        }}
-                    >
-                        <span style={{ color: "#F1F5F9" }}>CS Student</span>
+                    <h2 style={{
+                        fontFamily: "'Cabinet Grotesk', sans-serif",
+                        fontWeight: 900,
+                        fontSize: "clamp(2.5rem, 5.5vw, 5.5vw)",
+                        lineHeight: 0.95,
+                        letterSpacing: "-0.03em",
+                        margin: 0,
+                    }}>
+                        <span style={{ color: "#ECEFF4" }}>Data Science</span>
                         <br />
-                        <span
-                            style={{
-                                fontStyle: "italic",
-                                WebkitTextStroke: "1px rgba(167,139,250,0.7)",
-                                color: "transparent",
-                            }}
-                        >
-                            Data Science
+                        <span style={{ color: "#ECEFF4" }}>Student &</span>
+                        <br />
+                        <span style={{
+                            fontStyle: "italic",
+                            WebkitTextStroke: "1px rgba(94,234,212,0.5)",
+                            color: "transparent",
+                        }}>
+                            Video Editor
                         </span>
                     </h2>
                 </div>
 
-                <p
-                    style={{
-                        fontFamily: "'Satoshi', sans-serif",
-                        fontSize: "clamp(0.95rem, 1.15vw, 1.15rem)",
-                        color: "rgba(241,245,249,0.55)",
-                        lineHeight: 1.75,
-                        maxWidth: "36rem",
-                    }}
-                >
+                <p style={{
+                    fontFamily: "'Satoshi', sans-serif",
+                    fontSize: "clamp(0.92rem, 1.1vw, 1.1rem)",
+                    color: "rgba(236,239,244,0.5)",
+                    lineHeight: 1.8,
+                    maxWidth: "36rem",
+                }}>
                     Sophomore Computer Science Engineering student specializing in Data Science
-                    at Manipal Academy of Higher Education, Bengaluru. I build with Python, Java,
-                    and C — analyzing data, building algorithms, and exploring ML fundamentals.
+                    at Manipal Academy of Higher Education, Bengaluru. I work with Python, Java,
+                    and C — building data pipelines, exploring ML, and solving algorithmic problems.
                     <br /><br />
-                    Outside of academics, I lead the video content production for SideQuest Gaming
-                    Club, applying the same systematic thinking to creative storytelling.
+                    Outside of academics, I serve as Video Editing Head for SideQuest Gaming Club —
+                    creating motion-edited reels that bring the community&apos;s energy to life.
                 </p>
 
-                {/* Stats row */}
+                {/* Stats */}
                 <div style={{ display: "flex", gap: "clamp(1.5rem, 4vw, 3rem)" }}>
                     {stats.map((stat, i) => (
                         <div key={i}>
-                            <div
-                                style={{
-                                    fontFamily: "'Cabinet Grotesk', sans-serif",
-                                    fontWeight: 900,
-                                    fontSize: "clamp(2rem, 3.5vw, 3.5vw)",
-                                    color: "#F1F5F9",
-                                    lineHeight: 1,
-                                    letterSpacing: "-0.02em",
-                                }}
-                            >
+                            <div style={{
+                                fontFamily: "'Cabinet Grotesk', sans-serif",
+                                fontWeight: 900,
+                                fontSize: "clamp(1.5rem, 2.5vw, 2.5vw)",
+                                color: "#ECEFF4",
+                                lineHeight: 1,
+                                letterSpacing: "-0.02em",
+                            }}>
                                 {stat.value}
                             </div>
-                            <div
-                                style={{
-                                    fontFamily: "'JetBrains Mono', monospace",
-                                    fontSize: 10,
-                                    letterSpacing: "0.4em",
-                                    color: "rgba(241,245,249,0.3)",
-                                    textTransform: "uppercase",
-                                    marginTop: "0.4rem",
-                                }}
-                            >
+                            <div style={{
+                                fontFamily: "'JetBrains Mono', monospace",
+                                fontSize: 9,
+                                letterSpacing: "0.4em",
+                                color: "rgba(236,239,244,0.25)",
+                                textTransform: "uppercase",
+                                marginTop: "0.35rem",
+                            }}>
                                 {stat.label}
                             </div>
                         </div>
                     ))}
                 </div>
 
-                {/* Skills strip */}
-                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
-                    {["Python", "Java", "C", "Data Science", "Pandas", "SQL", "DaVinci Resolve"].map(skill => (
-                        <span
-                            key={skill}
-                            style={{
-                                fontFamily: "'JetBrains Mono', monospace",
-                                fontSize: 10,
-                                letterSpacing: "0.2em",
-                                color: "rgba(167,139,250,0.8)",
-                                background: "rgba(124,58,237,0.12)",
-                                border: "1px solid rgba(124,58,237,0.2)",
-                                borderRadius: "0.4rem",
-                                padding: "0.3rem 0.65rem",
-                                textTransform: "uppercase",
-                            }}
-                        >
+                {/* Skill pills */}
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
+                    {["Python", "Java", "C", "Data Science", "SQL", "Pandas", "DaVinci Resolve"].map(skill => (
+                        <span key={skill} style={{
+                            fontFamily: "'JetBrains Mono', monospace",
+                            fontSize: 9,
+                            letterSpacing: "0.2em",
+                            color: "rgba(0,229,204,0.8)",
+                            background: "rgba(0,229,204,0.06)",
+                            border: "1px solid rgba(0,229,204,0.15)",
+                            borderRadius: "0.375rem",
+                            padding: "0.25rem 0.6rem",
+                            textTransform: "uppercase",
+                        }}>
                             {skill}
                         </span>
                     ))}
                 </div>
             </div>
 
-            {/* Right column — image, NO grayscale or hover filter */}
+            {/* Right — profile image, no filters */}
             <div
                 data-cursor="hover"
                 style={{
@@ -147,43 +133,32 @@ export function AboutSection() {
                     alignSelf: "center",
                 }}
             >
-                {/* Violet glow bottom-right */}
-                <div
-                    style={{
-                        position: "absolute",
-                        bottom: 0,
-                        right: 0,
-                        width: "60%",
-                        height: "60%",
-                        background: "radial-gradient(ellipse at bottom right, rgba(124,58,237,0.55), transparent 70%)",
-                        filter: "blur(30px)",
-                        zIndex: 0,
-                        pointerEvents: "none",
-                    }}
-                />
+                {/* Teal glow */}
+                <div style={{
+                    position: "absolute",
+                    bottom: 0, right: 0,
+                    width: "55%", height: "55%",
+                    background: "radial-gradient(ellipse at bottom right, rgba(0,229,204,0.4), transparent 70%)",
+                    filter: "blur(30px)",
+                    zIndex: 0,
+                    pointerEvents: "none",
+                }} />
 
                 <Image
                     src="/profile-pic.jpg"
                     alt="Prateek Tammisetty"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    style={{
-                        objectFit: "cover",
-                        zIndex: 1,
-                    }}
+                    style={{ objectFit: "cover", zIndex: 1 }}
                 />
 
-                {/* Subtle vignette border overlay */}
-                <div
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        borderRadius: "2rem",
-                        border: "1px solid rgba(124,58,237,0.25)",
-                        zIndex: 2,
-                        pointerEvents: "none",
-                    }}
-                />
+                <div style={{
+                    position: "absolute", inset: 0,
+                    borderRadius: "2rem",
+                    border: "1px solid rgba(0,229,204,0.15)",
+                    zIndex: 2,
+                    pointerEvents: "none",
+                }} />
             </div>
         </section>
     );

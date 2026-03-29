@@ -1,13 +1,6 @@
 "use client";
 
-import { useState } from "react";
 import { X } from "lucide-react";
-
-interface NavLink {
-    label: string;
-    index: number;
-    preview?: string;
-}
 
 interface CircularNavProps {
     isOpen: boolean;
@@ -16,16 +9,14 @@ interface CircularNavProps {
     currentSection: number;
 }
 
-const NAV_LINKS: NavLink[] = [
+const NAV_LINKS = [
     { label: "Home", index: 0 },
     { label: "About", index: 1 },
-    { label: "Work", index: 2, preview: "/profile-pic.jpg" },
+    { label: "Work", index: 2 },
     { label: "Contact", index: 3 },
 ];
 
-export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: CircularNavProps) {
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
+export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
     const handleNavigate = (index: number) => {
         onNavigate(index);
         onClose();
@@ -33,17 +24,17 @@ export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: Cir
 
     return (
         <div
-            id="circular-nav"
-            className={isOpen ? "open" : ""}
             style={{
                 position: "fixed",
                 inset: 0,
-                background: "#080808",
+                background: "#08090E",
                 zIndex: 1000,
                 clipPath: isOpen ? "circle(150% at 95% 5%)" : "circle(0% at 95% 5%)",
                 transition: "clip-path 0.8s cubic-bezier(0.23,1,0.32,1)",
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "flex-start",
+                paddingLeft: "clamp(2.5rem, 10vw, 10rem)",
                 pointerEvents: isOpen ? "all" : "none",
             }}
         >
@@ -58,7 +49,7 @@ export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: Cir
                     width: 44,
                     height: 44,
                     borderRadius: "50%",
-                    background: "rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.06)",
                     border: "1px solid rgba(255,255,255,0.1)",
                     display: "flex",
                     alignItems: "center",
@@ -66,14 +57,13 @@ export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: Cir
                     color: "white",
                     cursor: "none",
                     transition: "border-color 0.3s, background 0.3s",
-                    backdropFilter: "blur(20px)",
                 }}
                 onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.2)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "#7C3AED";
+                    (e.currentTarget as HTMLElement).style.background = "rgba(0,229,204,0.15)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "#00E5CC";
                 }}
                 onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)";
+                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)";
                     (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
                 }}
             >
@@ -81,20 +71,11 @@ export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: Cir
             </button>
 
             {/* Nav links */}
-            <nav
-                style={{
-                    paddingLeft: "clamp(2.5rem, 10vw, 10rem)",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                }}
-            >
+            <nav style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
                 {NAV_LINKS.map((link, i) => (
                     <button
                         key={link.label}
                         onClick={() => handleNavigate(link.index)}
-                        onMouseEnter={() => setHoveredIndex(i)}
-                        onMouseLeave={() => setHoveredIndex(null)}
                         data-cursor="hover"
                         style={{
                             background: "none",
@@ -104,14 +85,26 @@ export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: Cir
                             fontWeight: 900,
                             fontSize: "clamp(3.5rem, 8vw, 8rem)",
                             lineHeight: 1.05,
-                            WebkitTextStroke: hoveredIndex === i ? "0px" : "1px rgba(241,245,249,0.5)",
-                            color: hoveredIndex === i ? "#A78BFA" : "transparent",
-                            transform: hoveredIndex === i ? "translateX(20px)" : "translateX(0)",
-                            transition: "color 0.35s cubic-bezier(0.23,1,0.32,1), transform 0.35s cubic-bezier(0.23,1,0.32,1), -webkit-text-stroke 0.35s",
-                            opacity: isOpen ? 1 : 0,
-                            transitionDelay: isOpen ? `${i * 0.07 + 0.3}s` : "0s",
+                            WebkitTextStroke: "1px rgba(236,239,244,0.35)",
+                            color: "transparent",
+                            letterSpacing: "-0.02em",
                             textAlign: "left",
                             display: "block",
+                            opacity: isOpen ? 1 : 0,
+                            transitionDelay: isOpen ? `${i * 0.07 + 0.3}s` : "0s",
+                            transition: "opacity 0.5s, color 0.3s, -webkit-text-stroke-color 0.3s, transform 0.35s cubic-bezier(0.23,1,0.32,1)",
+                        }}
+                        onMouseEnter={e => {
+                            const el = e.currentTarget as HTMLElement;
+                            el.style.color = "#00E5CC";
+                            el.style.webkitTextStrokeColor = "#00E5CC";
+                            el.style.transform = "translateX(16px)";
+                        }}
+                        onMouseLeave={e => {
+                            const el = e.currentTarget as HTMLElement;
+                            el.style.color = "transparent";
+                            el.style.webkitTextStrokeColor = "rgba(236,239,244,0.35)";
+                            el.style.transform = "translateX(0)";
                         }}
                     >
                         {link.label}
@@ -119,32 +112,7 @@ export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: Cir
                 ))}
             </nav>
 
-            {/* Preview image */}
-            {hoveredIndex !== null && NAV_LINKS[hoveredIndex]?.preview && (
-                <div
-                    style={{
-                        position: "absolute",
-                        right: "clamp(4rem, 12vw, 12rem)",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        width: 280,
-                        height: 380,
-                        borderRadius: "1rem",
-                        overflow: "hidden",
-                        opacity: 0.8,
-                        pointerEvents: "none",
-                    }}
-                >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                        src={NAV_LINKS[hoveredIndex].preview}
-                        alt="preview"
-                        style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                    />
-                </div>
-            )}
-
-            {/* Mono label bottom */}
+            {/* Bottom mono label */}
             <div
                 style={{
                     position: "absolute",
@@ -153,11 +121,11 @@ export function CircularNav({ isOpen, onClose, onNavigate, currentSection }: Cir
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
                     letterSpacing: "0.5em",
-                    color: "rgba(255,255,255,0.3)",
+                    color: "rgba(236,239,244,0.2)",
                     textTransform: "uppercase",
                 }}
             >
-                PORTFOLIO — 2026
+                PRATEEK TAMMISETTY — 2026
             </div>
         </div>
     );

@@ -2,28 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Modern Dark Aesthetic Design System ─── */
+/* ─── Electric Midnight Design System ─── */
 
 :root {
-  --bg: #080C14;
-  --bg-2: #0D1321;
-  --accent: #7C3AED;
-  /* Violet */
-  --accent-glow: rgba(124, 58, 237, 0.35);
-  --accent-2: #06B6D4;
-  /* Cyan */
-  --accent-3: #A78BFA;
-  /* Soft Lavender */
-  --fg: #F1F5F9;
-  --fg-muted: rgba(241, 245, 249, 0.45);
-  --fg-subtle: rgba(241, 245, 249, 0.08);
+  --bg: #050608;
+  --bg-2: #08090E;
+  --accent: #00E5CC;
+  /* Electric Teal / Mint */
+  --accent-glow: rgba(0, 229, 204, 0.2);
+  --accent-2: #8B5CF6;
+  /* Soft Violet secondary */
+  --accent-3: #5EEAD4;
+  /* Lighter teal */
+  --fg: #ECEFF4;
+  --fg-muted: rgba(236, 239, 244, 0.5);
+  --fg-subtle: rgba(236, 239, 244, 0.06);
   --ease-cinematic: cubic-bezier(0.23, 1, 0.32, 1);
   --font-display: 'Cabinet Grotesk', sans-serif;
   --font-body: 'Satoshi', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
-/* ─── Reset & Base ─── */
 *,
 *::before,
 *::after {
@@ -37,7 +36,6 @@ html {
   color: var(--fg);
   cursor: none;
   overflow: hidden;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -56,23 +54,26 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background: var(--fg);
+  background: var(--accent);
   pointer-events: none;
   z-index: 9999;
   transition: width 0.25s var(--ease-cinematic),
     height 0.25s var(--ease-cinematic),
-    background 0.25s var(--ease-cinematic);
+    background 0.25s var(--ease-cinematic),
+    opacity 0.2s;
   will-change: transform;
+  box-shadow: 0 0 12px var(--accent);
 }
 
 #custom-cursor.hovering {
-  width: 48px;
-  height: 48px;
-  background: rgba(124, 58, 237, 0.4);
-  border: 1px solid rgba(124, 58, 237, 0.8);
+  width: 44px;
+  height: 44px;
+  background: rgba(0, 229, 204, 0.15);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 20px rgba(0, 229, 204, 0.3);
 }
 
 /* ─── Grain Overlay ─── */
@@ -83,8 +84,8 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.04;
-  animation: grain-shift 0.8s steps(5) infinite;
+  opacity: 0.035;
+  animation: grain-shift 0.9s steps(5) infinite;
 }
 
 @keyframes grain-shift {
@@ -118,7 +119,6 @@ body {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
-  mix-blend-mode: normal;
   pointer-events: none;
   will-change: transform;
 }
@@ -142,25 +142,20 @@ body {
   color: transparent;
 }
 
-.text-outline-accent {
-  -webkit-text-stroke: 1px var(--accent);
-  color: transparent;
-}
-
-/* Hover fill for contact section large text */
+/* Hover-fill for contact section */
 .text-outline-hover-fill {
-  -webkit-text-stroke: 1px rgba(241, 245, 249, 0.6);
+  -webkit-text-stroke: 1px rgba(236, 239, 244, 0.4);
   color: transparent;
-  transition: color 0.4s var(--ease-cinematic),
-    -webkit-text-stroke-color 0.4s var(--ease-cinematic);
+  transition: color 0.45s var(--ease-cinematic),
+    -webkit-text-stroke-color 0.45s var(--ease-cinematic);
 }
 
 .text-outline-hover-fill:hover {
-  color: var(--accent-3);
-  -webkit-text-stroke-color: var(--accent-3);
+  color: var(--accent);
+  -webkit-text-stroke-color: var(--accent);
 }
 
-/* ─── Scrollbar hidden ─── */
+/* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
   display: none;
 }
@@ -202,12 +197,4 @@ body {
   inset: 0;
   width: 100%;
   height: 100%;
-}
-
-/* ─── Cursor reaction background ─── */
-#cursor-bg {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
 }

@@ -1,23 +1,24 @@
 "use client";
 
 import { useState } from "react";
-import { ExternalLink } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 const WORK_ITEMS = [
     {
         title: "SideQuest Reel I",
         category: "MOTION DESIGN",
+        description: "High-energy promotional reel produced for the SideQuest Gaming Club community.",
         link: "https://www.instagram.com/p/DQO7nSMjIFL/",
-        thumb: "/reel1-thumb.png",
         year: "2025",
+        num: "01",
     },
     {
         title: "SideQuest Reel II",
         category: "VIDEO EDITING",
+        description: "Event highlight reel capturing the competitive energy of the gaming community.",
         link: "https://www.instagram.com/p/DTpR-I1k97D/",
-        thumb: "/reel2-thumb.png",
         year: "2025",
+        num: "02",
     },
 ];
 
@@ -33,11 +34,10 @@ export function WorkSection() {
                 padding: "clamp(1.5rem, 4vw, 3rem)",
                 paddingTop: "clamp(5rem, 9vw, 7rem)",
                 overflow: "hidden",
-                position: "relative",
-                gap: "clamp(1.5rem, 2.5vw, 2rem)",
+                gap: "clamp(2rem, 3vw, 3rem)",
             }}
         >
-            {/* Section title */}
+            {/* Title row */}
             <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between" }}>
                 <h2
                     style={{
@@ -46,7 +46,7 @@ export function WorkSection() {
                         fontSize: "clamp(3.5rem, 9vw, 9vw)",
                         lineHeight: 0.9,
                         letterSpacing: "-0.03em",
-                        color: "#F1F5F9",
+                        color: "#ECEFF4",
                         margin: 0,
                     }}
                 >
@@ -55,7 +55,7 @@ export function WorkSection() {
                     <span
                         style={{
                             fontStyle: "italic",
-                            WebkitTextStroke: "1px rgba(167,139,250,0.6)",
+                            WebkitTextStroke: "1px rgba(94,234,212,0.5)",
                             color: "transparent",
                         }}
                     >
@@ -67,7 +67,7 @@ export function WorkSection() {
                         fontFamily: "'JetBrains Mono', monospace",
                         fontSize: 10,
                         letterSpacing: "0.5em",
-                        color: "rgba(241,245,249,0.25)",
+                        color: "rgba(236,239,244,0.2)",
                         textTransform: "uppercase",
                         paddingBottom: "0.5rem",
                     }}
@@ -76,16 +76,29 @@ export function WorkSection() {
                 </div>
             </div>
 
-            {/* Cards grid */}
-            <div
-                style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: "1.25rem",
-                    flex: 1,
-                    minHeight: 0,
-                }}
-            >
+            {/* Work list — no images, just clean text cards */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+                {/* Header row */}
+                <div
+                    style={{
+                        display: "grid",
+                        gridTemplateColumns: "3rem 1fr 1fr auto",
+                        gap: "2rem",
+                        padding: "0 0 0.75rem 0",
+                        borderBottom: "1px solid rgba(236,239,244,0.08)",
+                        fontFamily: "'JetBrains Mono', monospace",
+                        fontSize: 10,
+                        letterSpacing: "0.4em",
+                        color: "rgba(236,239,244,0.25)",
+                        textTransform: "uppercase",
+                    }}
+                >
+                    <span>No.</span>
+                    <span>Project</span>
+                    <span>Type</span>
+                    <span>Year</span>
+                </div>
+
                 {WORK_ITEMS.map((item, i) => (
                     <a
                         key={i}
@@ -96,108 +109,116 @@ export function WorkSection() {
                         onMouseEnter={() => setHoveredIndex(i)}
                         onMouseLeave={() => setHoveredIndex(null)}
                         style={{
-                            display: "block",
-                            borderRadius: "1.5rem",
-                            border: `1px solid ${hoveredIndex === i ? "rgba(124,58,237,0.4)" : "rgba(241,245,249,0.08)"}`,
-                            overflow: "hidden",
-                            position: "relative",
-                            aspectRatio: "16 / 9",
+                            display: "grid",
+                            gridTemplateColumns: "3rem 1fr 1fr auto",
+                            gap: "2rem",
+                            padding: "1.75rem 0",
+                            borderBottom: "1px solid rgba(236,239,244,0.07)",
                             textDecoration: "none",
                             cursor: "none",
-                            transition: "border-color 0.4s, transform 0.4s cubic-bezier(0.23,1,0.32,1)",
-                            transform: hoveredIndex === i ? "scale(1.01)" : "scale(1)",
+                            alignItems: "center",
+                            transition: "background 0.3s",
+                            background: hoveredIndex === i ? "rgba(0,229,204,0.03)" : "transparent",
                         }}
                     >
-                        {/* Thumbnail image */}
-                        <Image
-                            src={item.thumb}
-                            alt={item.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
+                        {/* Number */}
+                        <span
                             style={{
-                                objectFit: "cover",
-                                transition: "transform 0.6s cubic-bezier(0.23,1,0.32,1)",
-                                transform: hoveredIndex === i ? "scale(1.04)" : "scale(1)",
-                            }}
-                        />
-
-                        {/* Always-visible dark gradient at bottom for text legibility */}
-                        <div
-                            style={{
-                                position: "absolute",
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                height: "50%",
-                                background: "linear-gradient(to top, rgba(8,12,20,0.9) 0%, transparent 100%)",
-                                zIndex: 1,
-                            }}
-                        />
-
-                        {/* Hover tint */}
-                        <div
-                            style={{
-                                position: "absolute",
-                                inset: 0,
-                                background: "rgba(8,12,20,0.5)",
-                                opacity: hoveredIndex === i ? 1 : 0,
-                                transition: "opacity 0.4s",
-                                zIndex: 2,
-                            }}
-                        />
-
-                        {/* Info — always visible */}
-                        <div
-                            style={{
-                                position: "absolute",
-                                bottom: "1.5rem",
-                                left: "1.5rem",
-                                right: "1.5rem",
-                                zIndex: 3,
-                                display: "flex",
-                                justifyContent: "space-between",
-                                alignItems: "flex-end",
+                                fontFamily: "'JetBrains Mono', monospace",
+                                fontSize: 11,
+                                letterSpacing: "0.3em",
+                                color: hoveredIndex === i ? "#00E5CC" : "rgba(236,239,244,0.2)",
+                                transition: "color 0.3s",
                             }}
                         >
-                            <div>
-                                <div
-                                    style={{
-                                        fontFamily: "'JetBrains Mono', monospace",
-                                        fontSize: 10,
-                                        letterSpacing: "0.45em",
-                                        color: "#A78BFA",
-                                        textTransform: "uppercase",
-                                        marginBottom: "0.35rem",
-                                    }}
-                                >
-                                    {item.category} — {item.year}
-                                </div>
-                                <div
-                                    style={{
-                                        fontFamily: "'Cabinet Grotesk', sans-serif",
-                                        fontWeight: 900,
-                                        fontSize: "clamp(1.25rem, 2vw, 2vw)",
-                                        color: "#F1F5F9",
-                                        letterSpacing: "-0.02em",
-                                    }}
-                                >
-                                    {item.title}
-                                </div>
-                            </div>
+                            {item.num}
+                        </span>
 
+                        {/* Title + description */}
+                        <div>
+                            <div
+                                style={{
+                                    fontFamily: "'Cabinet Grotesk', sans-serif",
+                                    fontWeight: 900,
+                                    fontSize: "clamp(1.5rem, 2.5vw, 2.5vw)",
+                                    color: "#ECEFF4",
+                                    letterSpacing: "-0.02em",
+                                    lineHeight: 1.1,
+                                    marginBottom: "0.4rem",
+                                }}
+                            >
+                                {item.title}
+                            </div>
+                            <div
+                                style={{
+                                    fontFamily: "'Satoshi', sans-serif",
+                                    fontSize: "clamp(0.85rem, 1vw, 1rem)",
+                                    color: "rgba(236,239,244,0.4)",
+                                    lineHeight: 1.5,
+                                }}
+                            >
+                                {item.description}
+                            </div>
+                        </div>
+
+                        {/* Category */}
+                        <span
+                            style={{
+                                fontFamily: "'JetBrains Mono', monospace",
+                                fontSize: 10,
+                                letterSpacing: "0.35em",
+                                color: "rgba(236,239,244,0.3)",
+                                textTransform: "uppercase",
+                            }}
+                        >
+                            {item.category}
+                        </span>
+
+                        {/* Year + arrow */}
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.75rem",
+                            }}
+                        >
+                            <span
+                                style={{
+                                    fontFamily: "'JetBrains Mono', monospace",
+                                    fontSize: 11,
+                                    letterSpacing: "0.2em",
+                                    color: "rgba(236,239,244,0.25)",
+                                }}
+                            >
+                                {item.year}
+                            </span>
                             <div
                                 style={{
                                     opacity: hoveredIndex === i ? 1 : 0,
-                                    transform: hoveredIndex === i ? "translateY(0)" : "translateY(6px)",
-                                    transition: "opacity 0.3s, transform 0.3s",
+                                    transform: hoveredIndex === i ? "translate(0,0)" : "translate(-6px,6px)",
+                                    transition: "opacity 0.25s, transform 0.25s",
+                                    color: "#00E5CC",
                                 }}
                             >
-                                <ExternalLink size={20} color="#A78BFA" strokeWidth={1.5} />
+                                <ArrowUpRight size={20} strokeWidth={1.5} />
                             </div>
                         </div>
                     </a>
                 ))}
             </div>
+
+            {/* Subtle CTA hint */}
+            <p
+                style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    fontSize: 10,
+                    letterSpacing: "0.4em",
+                    color: "rgba(236,239,244,0.18)",
+                    textTransform: "uppercase",
+                }}
+            >
+                ↑ Click any row to view on Instagram
+            </p>
         </section>
     );
 }
