@@ -22,17 +22,37 @@ export function ContactSection() {
             await emailjs.send(
                 process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "",
                 process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "",
-                formData,
+                {
+                    user_name: formData.user_name,
+                    user_email: formData.user_email,
+                    message: formData.message,
+                    to_name: "Prateek",
+                    reply_to: formData.user_email,
+                },
                 process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ""
             );
             setSubmitStatus("success");
             setFormData({ user_name: "", user_email: "", message: "" });
-        } catch {
+        } catch (err) {
+            console.error("EmailJS error:", err);
             setSubmitStatus("error");
         } finally {
             setIsSubmitting(false);
             setTimeout(() => setSubmitStatus("idle"), 5000);
         }
+    };
+
+    const inputStyle: React.CSSProperties = {
+        background: "rgba(255,255,255,0.04)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        borderRadius: "0.75rem",
+        padding: "0.875rem 1rem",
+        color: "#ECEFF4",
+        fontFamily: "'Satoshi', sans-serif",
+        fontSize: "1rem",
+        outline: "none",
+        width: "100%",
+        transition: "border-color 0.25s",
     };
 
     return (
@@ -56,14 +76,14 @@ export function ContactSection() {
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
                     letterSpacing: "0.5em",
-                    color: "#00E5CC",
+                    color: "rgba(236,239,244,0.4)",
                     textTransform: "uppercase",
                 }}
             >
                 ✦ Get In Touch
             </div>
 
-            {/* Headline — hover-fill teal */}
+            {/* Headline — hover-fill white */}
             <h2
                 style={{
                     fontFamily: "'Cabinet Grotesk', sans-serif",
@@ -71,19 +91,19 @@ export function ContactSection() {
                     fontSize: "clamp(3.5rem, 10vw, 10vw)",
                     lineHeight: 0.9,
                     letterSpacing: "-0.03em",
-                    WebkitTextStroke: "1px rgba(236,239,244,0.4)",
+                    WebkitTextStroke: "1px rgba(236,239,244,0.35)",
                     color: "transparent",
                     margin: 0,
                     cursor: "default",
                     transition: "color 0.45s cubic-bezier(0.23,1,0.32,1), -webkit-text-stroke-color 0.45s",
                 }}
                 onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.color = "#00E5CC";
-                    (e.currentTarget as HTMLElement).style.webkitTextStrokeColor = "#00E5CC";
+                    (e.currentTarget as HTMLElement).style.color = "#ECEFF4";
+                    (e.currentTarget as HTMLElement).style.webkitTextStrokeColor = "#ECEFF4";
                 }}
                 onMouseLeave={e => {
                     (e.currentTarget as HTMLElement).style.color = "transparent";
-                    (e.currentTarget as HTMLElement).style.webkitTextStrokeColor = "rgba(236,239,244,0.4)";
+                    (e.currentTarget as HTMLElement).style.webkitTextStrokeColor = "rgba(236,239,244,0.35)";
                 }}
             >
                 Say Hello.
@@ -108,67 +128,63 @@ export function ContactSection() {
                             required
                             value={formData[field.id as keyof typeof formData]}
                             onChange={e => setFormData(p => ({ ...p, [field.id]: e.target.value }))}
-                            style={{
-                                background: "rgba(236,239,244,0.04)",
-                                border: "1px solid rgba(236,239,244,0.08)",
-                                borderRadius: "0.75rem",
-                                padding: "0.875rem 1rem",
-                                color: "#ECEFF4",
-                                fontFamily: "'Satoshi', sans-serif",
-                                fontSize: "1rem",
-                                outline: "none",
-                            }}
+                            style={inputStyle}
+                            onFocus={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)")}
+                            onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
                         />
                     ))}
                 </div>
                 <textarea
                     id="message"
                     name="message"
-                    placeholder="Tell me about your project..."
+                    placeholder="Tell me about your project or just say hi..."
                     required
                     rows={3}
                     value={formData.message}
                     onChange={e => setFormData(p => ({ ...p, message: e.target.value }))}
                     style={{
-                        background: "rgba(236,239,244,0.04)",
-                        border: "1px solid rgba(236,239,244,0.08)",
-                        borderRadius: "0.75rem",
-                        padding: "0.875rem 1rem",
-                        color: "#ECEFF4",
-                        fontFamily: "'Satoshi', sans-serif",
-                        fontSize: "1rem",
-                        outline: "none",
+                        ...inputStyle,
                         resize: "none",
                     }}
+                    onFocus={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)")}
+                    onBlur={e => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
                 />
                 <button
                     type="submit"
                     disabled={isSubmitting}
                     data-cursor="hover"
                     style={{
-                        background: isSubmitting ? "rgba(0,229,204,0.4)" : "#00E5CC",
+                        background: isSubmitting ? "rgba(236,239,244,0.3)" : "#ECEFF4",
                         border: "none",
                         borderRadius: "0.75rem",
                         padding: "1rem",
-                        color: "#050608",
+                        color: "#0a0a0a",
                         fontFamily: "'Cabinet Grotesk', sans-serif",
                         fontWeight: 900,
                         fontSize: "1.1rem",
                         cursor: "none",
-                        transition: "background 0.3s, opacity 0.3s",
+                        transition: "background 0.3s, opacity 0.3s, transform 0.2s",
                         letterSpacing: "0.02em",
+                        opacity: isSubmitting ? 0.6 : 1,
+                    }}
+                    onMouseEnter={e => {
+                        if (!isSubmitting) (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
+                    }}
+                    onMouseLeave={e => {
+                        (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                     }}
                 >
                     {isSubmitting ? "Sending..." : "Send Message →"}
                 </button>
+
                 {submitStatus === "success" && (
-                    <p style={{ color: "#00E5CC", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.3em" }}>
-                        MESSAGE SENT.
+                    <p style={{ color: "#a3e4d7", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.3em" }}>
+                        ✓ MESSAGE SENT — I&apos;LL GET BACK TO YOU SOON!
                     </p>
                 )}
                 {submitStatus === "error" && (
                     <p style={{ color: "#ff6b6b", fontFamily: "'JetBrains Mono', monospace", fontSize: 11, letterSpacing: "0.3em" }}>
-                        SOMETHING WENT WRONG. TRY AGAIN.
+                        SOMETHING WENT WRONG. TRY EMAILING DIRECTLY.
                     </p>
                 )}
             </form>
@@ -187,26 +203,26 @@ export function ContactSection() {
                             width: 52,
                             height: 52,
                             borderRadius: "50%",
-                            border: "1px solid rgba(236,239,244,0.1)",
+                            border: "1px solid rgba(236,239,244,0.12)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            color: "rgba(236,239,244,0.5)",
+                            color: "rgba(236,239,244,0.45)",
                             textDecoration: "none",
                             cursor: "none",
                             transition: "background 0.3s, color 0.3s, border-color 0.3s",
                         }}
                         onMouseEnter={e => {
                             const el = e.currentTarget as HTMLElement;
-                            el.style.background = "rgba(0,229,204,0.12)";
-                            el.style.color = "#00E5CC";
-                            el.style.borderColor = "rgba(0,229,204,0.4)";
+                            el.style.background = "rgba(255,255,255,0.1)";
+                            el.style.color = "#ECEFF4";
+                            el.style.borderColor = "rgba(255,255,255,0.3)";
                         }}
                         onMouseLeave={e => {
                             const el = e.currentTarget as HTMLElement;
                             el.style.background = "transparent";
-                            el.style.color = "rgba(236,239,244,0.5)";
-                            el.style.borderColor = "rgba(236,239,244,0.1)";
+                            el.style.color = "rgba(236,239,244,0.45)";
+                            el.style.borderColor = "rgba(236,239,244,0.12)";
                         }}
                     >
                         {social.icon}
@@ -222,11 +238,11 @@ export function ContactSection() {
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
                     letterSpacing: "0.3em",
-                    color: "rgba(236,239,244,0.15)",
+                    color: "rgba(236,239,244,0.12)",
                     textTransform: "uppercase",
                 }}
             >
-                PRATEEK TAMMISETTY — ALL RIGHTS RESERVED © 2026
+                PRATEEK TAMMISETTY — ALL RIGHTS RESERVED © 2025
             </p>
         </section>
     );

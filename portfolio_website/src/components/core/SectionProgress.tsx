@@ -23,7 +23,7 @@ export function SectionProgress({ current, total }: SectionProgressProps) {
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 11,
                 letterSpacing: "0.3em",
-                color: "#00E5CC",
+            color: "rgba(236,239,244,0.8)",
                 fontWeight: 700,
             }}>
                 {String(current + 1).padStart(2, "0")}
@@ -36,7 +36,7 @@ export function SectionProgress({ current, total }: SectionProgressProps) {
                 <div style={{
                     position: "absolute", left: 0, top: 0, height: "100%",
                     width: `${((current + 1) / total) * 100}%`,
-                    background: "#00E5CC",
+                    background: "#ECEFF4",
                     transition: "width 0.5s cubic-bezier(0.23,1,0.32,1)",
                 }} />
             </div>

@@ -1,24 +1,53 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 
-const WORK_ITEMS = [
+const PROJECTS = [
     {
-        title: "SideQuest Reel I",
-        category: "MOTION DESIGN",
-        description: "High-energy promotional reel produced for the SideQuest Gaming Club community.",
-        link: "https://www.instagram.com/p/DQO7nSMjIFL/",
-        year: "2025",
+        title: "Gesture Virtual Mouse",
+        category: "COMPUTER VISION",
+        description: "Hand-gesture controlled mouse using OpenCV and MediaPipe. Controls cursor, clicks, scrolls, and double-clicks via real-time hand tracking — no physical mouse needed.",
+        tech: ["Python", "OpenCV", "MediaPipe", "PyAutoGUI"],
+        link: "https://github.com/Prateeknerd",
+        year: "2026",
         num: "01",
     },
     {
-        title: "SideQuest Reel II",
-        category: "VIDEO EDITING",
-        description: "Event highlight reel capturing the competitive energy of the gaming community.",
-        link: "https://www.instagram.com/p/DTpR-I1k97D/",
-        year: "2025",
+        title: "Shopping Mall System",
+        category: "FULL-STACK",
+        description: "Desktop application for mall management with customer, employee, and store modules. Features complete CRUD operations with Oracle SQL backend via Python DB-API.",
+        tech: ["Python", "Tkinter", "Oracle SQL", "cx_Oracle"],
+        link: "https://github.com/Prateeknerd",
+        year: "2026",
         num: "02",
+    },
+    {
+        title: "Aim Trainer",
+        category: "GAME DEV",
+        description: "JavaFX-based reaction-time training game with dynamic target spawning, score tracking, lives system, and performance analytics across multiple sessions.",
+        tech: ["Java", "JavaFX", "OOP"],
+        link: "https://github.com/Prateeknerd",
+        year: "2026",
+        num: "03",
+    },
+    {
+        title: "Vault — Finance Tracker",
+        category: "MOBILE APP",
+        description: "Cross-platform personal finance app built with Flutter. Tracks income, expenses, and savings with clean data visualisation and local persistence.",
+        tech: ["Flutter", "Dart", "Hive DB"],
+        link: "https://github.com/Prateeknerd",
+        year: "2026",
+        num: "04",
+    },
+    {
+        title: "Portfolio Website",
+        category: "WEB DEV",
+        description: "This very site — built with Next.js, TypeScript, and custom animations. Features interactive wave canvas, magnetic cursor, and cinematic section transitions.",
+        tech: ["Next.js", "TypeScript", "Tailwind CSS"],
+        link: "https://github.com/Prateeknerd/pfolio",
+        year: "2026",
+        num: "05",
     },
 ];
 
@@ -34,7 +63,7 @@ export function WorkSection() {
                 padding: "clamp(1.5rem, 4vw, 3rem)",
                 paddingTop: "clamp(5rem, 9vw, 7rem)",
                 overflow: "hidden",
-                gap: "clamp(2rem, 3vw, 3rem)",
+                gap: "clamp(1rem, 1.5vw, 1.5rem)",
             }}
         >
             {/* Title row */}
@@ -43,24 +72,14 @@ export function WorkSection() {
                     style={{
                         fontFamily: "'Cabinet Grotesk', sans-serif",
                         fontWeight: 900,
-                        fontSize: "clamp(3.5rem, 9vw, 9vw)",
+                        fontSize: "clamp(3rem, 8vw, 8vw)",
                         lineHeight: 0.9,
                         letterSpacing: "-0.03em",
                         color: "#ECEFF4",
                         margin: 0,
                     }}
                 >
-                    Featured
-                    <br />
-                    <span
-                        style={{
-                            fontStyle: "italic",
-                            WebkitTextStroke: "1px rgba(94,234,212,0.5)",
-                            color: "transparent",
-                        }}
-                    >
-                        Work
-                    </span>
+                    Projects
                 </h2>
                 <div
                     style={{
@@ -72,12 +91,22 @@ export function WorkSection() {
                         paddingBottom: "0.5rem",
                     }}
                 >
-                    ✦ Creative Projects
+                    ✦ Technical Work
                 </div>
             </div>
 
-            {/* Work list — no images, just clean text cards */}
-            <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>
+            {/* Project list */}
+            <div 
+                data-scrollable="true"
+                style={{ 
+                    display: "flex", 
+                    flexDirection: "column", 
+                    gap: "1px", 
+                    overflowY: "auto", 
+                    flex: 1,
+                    paddingRight: "0.5rem", // Add space for potential hidden scrollbar logic
+                }}
+            >
                 {/* Header row */}
                 <div
                     style={{
@@ -99,7 +128,7 @@ export function WorkSection() {
                     <span>Year</span>
                 </div>
 
-                {WORK_ITEMS.map((item, i) => (
+                {PROJECTS.map((item, i) => (
                     <a
                         key={i}
                         href={item.link}
@@ -112,13 +141,13 @@ export function WorkSection() {
                             display: "grid",
                             gridTemplateColumns: "3rem 1fr 1fr auto",
                             gap: "2rem",
-                            padding: "1.75rem 0",
-                            borderBottom: "1px solid rgba(236,239,244,0.07)",
+                            padding: "1.5rem 0",
+                            borderBottom: "1px solid rgba(236,239,244,0.06)",
                             textDecoration: "none",
                             cursor: "none",
                             alignItems: "center",
                             transition: "background 0.3s",
-                            background: hoveredIndex === i ? "rgba(0,229,204,0.03)" : "transparent",
+                            background: hoveredIndex === i ? "rgba(255,255,255,0.03)" : "transparent",
                         }}
                     >
                         {/* Number */}
@@ -127,24 +156,24 @@ export function WorkSection() {
                                 fontFamily: "'JetBrains Mono', monospace",
                                 fontSize: 11,
                                 letterSpacing: "0.3em",
-                                color: hoveredIndex === i ? "#00E5CC" : "rgba(236,239,244,0.2)",
+                                color: hoveredIndex === i ? "#ECEFF4" : "rgba(236,239,244,0.2)",
                                 transition: "color 0.3s",
                             }}
                         >
                             {item.num}
                         </span>
 
-                        {/* Title + description */}
+                        {/* Title + description + tech */}
                         <div>
                             <div
                                 style={{
                                     fontFamily: "'Cabinet Grotesk', sans-serif",
                                     fontWeight: 900,
-                                    fontSize: "clamp(1.5rem, 2.5vw, 2.5vw)",
+                                    fontSize: "clamp(1.2rem, 2vw, 2vw)",
                                     color: "#ECEFF4",
                                     letterSpacing: "-0.02em",
                                     lineHeight: 1.1,
-                                    marginBottom: "0.4rem",
+                                    marginBottom: "0.35rem",
                                 }}
                             >
                                 {item.title}
@@ -152,12 +181,31 @@ export function WorkSection() {
                             <div
                                 style={{
                                     fontFamily: "'Satoshi', sans-serif",
-                                    fontSize: "clamp(0.85rem, 1vw, 1rem)",
-                                    color: "rgba(236,239,244,0.4)",
+                                    fontSize: "clamp(0.78rem, 0.9vw, 0.9rem)",
+                                    color: "rgba(236,239,244,0.35)",
                                     lineHeight: 1.5,
+                                    marginBottom: "0.5rem",
                                 }}
                             >
                                 {item.description}
+                            </div>
+                            {/* Tech badges */}
+                            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.3rem" }}>
+                                {item.tech.map(t => (
+                                    <span key={t} style={{
+                                        fontFamily: "'JetBrains Mono', monospace",
+                                        fontSize: 8,
+                                        letterSpacing: "0.15em",
+                                        color: "rgba(236,239,244,0.45)",
+                                        background: "rgba(255,255,255,0.05)",
+                                        border: "1px solid rgba(255,255,255,0.08)",
+                                        borderRadius: "0.25rem",
+                                        padding: "0.15rem 0.45rem",
+                                        textTransform: "uppercase",
+                                    }}>
+                                        {t}
+                                    </span>
+                                ))}
                             </div>
                         </div>
 
@@ -197,27 +245,27 @@ export function WorkSection() {
                                     opacity: hoveredIndex === i ? 1 : 0,
                                     transform: hoveredIndex === i ? "translate(0,0)" : "translate(-6px,6px)",
                                     transition: "opacity 0.25s, transform 0.25s",
-                                    color: "#00E5CC",
+                                    color: "#ECEFF4",
                                 }}
                             >
-                                <ArrowUpRight size={20} strokeWidth={1.5} />
+                                <Github size={18} strokeWidth={1.5} />
                             </div>
                         </div>
                     </a>
                 ))}
             </div>
 
-            {/* Subtle CTA hint */}
+            {/* CTA hint */}
             <p
                 style={{
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
                     letterSpacing: "0.4em",
-                    color: "rgba(236,239,244,0.18)",
+                    color: "rgba(236,239,244,0.15)",
                     textTransform: "uppercase",
                 }}
             >
-                ↑ Click any row to view on Instagram
+                ↑ Click any row to view on GitHub
             </p>
         </section>
     );

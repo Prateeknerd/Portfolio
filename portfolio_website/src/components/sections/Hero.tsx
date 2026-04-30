@@ -28,10 +28,10 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                 fontFamily: "'JetBrains Mono', monospace",
                 fontSize: 11,
                 letterSpacing: "0.5em",
-                color: "#00E5CC",
+                color: "rgba(236,239,244,0.5)",
                 textTransform: "uppercase",
             }}>
-                ✦ CSE / Data Science — Manipal 2026
+                ✦ CSE / Data Science — Manipal
             </div>
 
             {/* Main type */}
@@ -52,7 +52,7 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                     <div style={{
                         position: "absolute",
                         inset: "-20% -10%",
-                        background: "radial-gradient(ellipse, rgba(0,229,204,0.18) 0%, transparent 70%)",
+                        background: "radial-gradient(ellipse, rgba(255,255,255,0.06) 0%, transparent 70%)",
                         filter: "blur(40px)",
                         pointerEvents: "none",
                         zIndex: 0,
@@ -62,9 +62,7 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                         fontWeight: 900,
                         fontSize: "clamp(4rem, 14vw, 14vw)",
                         lineHeight: 0.92,
-                        fontStyle: "italic",
-                        WebkitTextStroke: "1px rgba(94,234,212,0.5)",
-                        color: "transparent",
+                        color: "#ECEFF4",
                         letterSpacing: "-0.03em",
                         margin: 0,
                         position: "relative",
@@ -94,7 +92,7 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                     margin: 0,
                 }}>
                     Computer Science student specialising in Data Science.
-                    Building with Python, Java & C — and occasionally a timeline.
+                    Building with Python, Java & C — solving real-world problems through code.
                 </p>
 
                 <button
@@ -114,7 +112,7 @@ export function HeroSection({ onNext }: HeroSectionProps) {
                         textTransform: "uppercase",
                         transition: "color 0.3s",
                     }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "#00E5CC")}
+                    onMouseEnter={e => (e.currentTarget.style.color = "#ECEFF4")}
                     onMouseLeave={e => (e.currentTarget.style.color = "rgba(236,239,244,0.25)")}
                 >
                     SCROLL

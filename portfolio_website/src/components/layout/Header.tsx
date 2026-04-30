@@ -77,8 +77,8 @@ export function Header({ onMenuOpen }: HeaderProps) {
                         transition: "background 0.3s, border-color 0.3s",
                     }}
                     onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.background = "rgba(124,58,237,0.2)";
-                        (e.currentTarget as HTMLElement).style.borderColor = "#7C3AED";
+                        (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.15)";
+                        (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.3)";
                     }}
                     onMouseLeave={e => {
                         (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.08)";

@@ -2,18 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Electric Midnight Design System ─── */
+/* ─── Monochrome Design System ─── */
 
 :root {
-  --bg: #050608;
-  --bg-2: #08090E;
-  --accent: #00E5CC;
-  /* Electric Teal / Mint */
-  --accent-glow: rgba(0, 229, 204, 0.2);
-  --accent-2: #8B5CF6;
-  /* Soft Violet secondary */
-  --accent-3: #5EEAD4;
-  /* Lighter teal */
+  --bg: #0a0a0a;
+  --bg-2: #111111;
+  --accent: #ffffff;
+  --accent-glow: rgba(255, 255, 255, 0.15);
+  --accent-2: #cccccc;
+  --accent-3: #888888;
   --fg: #ECEFF4;
   --fg-muted: rgba(236, 239, 244, 0.5);
   --fg-subtle: rgba(236, 239, 244, 0.06);
@@ -65,15 +62,15 @@ body {
     background 0.25s var(--ease-cinematic),
     opacity 0.2s;
   will-change: transform;
-  box-shadow: 0 0 12px var(--accent);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
 #custom-cursor.hovering {
   width: 44px;
   height: 44px;
-  background: rgba(0, 229, 204, 0.15);
+  background: rgba(255, 255, 255, 0.1);
   border: 1px solid var(--accent);
-  box-shadow: 0 0 20px rgba(0, 229, 204, 0.3);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 /* ─── Grain Overlay ─── */
@@ -84,7 +81,7 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 9998;
-  opacity: 0.035;
+  opacity: 0.04;
   animation: grain-shift 0.9s steps(5) infinite;
 }
 

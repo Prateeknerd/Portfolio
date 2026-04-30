@@ -34,7 +34,7 @@ export function AboutSection() {
                         fontFamily: "'JetBrains Mono', monospace",
                         fontSize: 10,
                         letterSpacing: "0.5em",
-                        color: "#00E5CC",
+                        color: "rgba(236,239,244,0.5)",
                         textTransform: "uppercase",
                         marginBottom: "1.5rem",
                     }}>
@@ -53,12 +53,8 @@ export function AboutSection() {
                         <br />
                         <span style={{ color: "#ECEFF4" }}>Student &</span>
                         <br />
-                        <span style={{
-                            fontStyle: "italic",
-                            WebkitTextStroke: "1px rgba(94,234,212,0.5)",
-                            color: "transparent",
-                        }}>
-                            Video Editor
+                        <span style={{ color: "#ECEFF4" }}>
+                            Developer
                         </span>
                     </h2>
                 </div>
@@ -74,8 +70,8 @@ export function AboutSection() {
                     at Manipal Institute of Technology, Bengaluru. I work with Python, Java,
                     and C — building data pipelines, exploring ML, and solving algorithmic problems.
                     <br /><br />
-                    Outside of academics, I serve as Video Editing Head for SideQuest Gaming Club —
-                    creating motion-edited reels that bring the community&apos;s energy to life.
+                    I&apos;ve built projects ranging from gesture-controlled systems using computer vision
+                    to full-stack desktop applications, always focused on solving real problems with clean code.
                 </p>
 
                 {/* Resume Button */}
@@ -90,11 +86,11 @@ export function AboutSection() {
                             display: "inline-flex",
                             alignItems: "center",
                             gap: "0.75rem",
-                            background: "rgba(0,229,204,0.1)",
-                            border: "1px solid rgba(0,229,204,0.25)",
+                            background: "rgba(255,255,255,0.06)",
+                            border: "1px solid rgba(255,255,255,0.15)",
                             padding: "0.75rem 1.25rem",
                             borderRadius: "0.5rem",
-                            color: "#00E5CC",
+                            color: "#ECEFF4",
                             textDecoration: "none",
                             fontFamily: "'JetBrains Mono', monospace",
                             fontSize: 11,
@@ -104,11 +100,11 @@ export function AboutSection() {
                             transition: "background 0.3s, transform 0.3s",
                         }}
                         onMouseEnter={e => {
-                            (e.currentTarget as HTMLElement).style.background = "rgba(0,229,204,0.2)";
+                            (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.12)";
                             (e.currentTarget as HTMLElement).style.transform = "translateY(-2px)";
                         }}
                         onMouseLeave={e => {
-                            (e.currentTarget as HTMLElement).style.background = "rgba(0,229,204,0.1)";
+                            (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)";
                             (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                         }}
                     >
@@ -147,14 +143,14 @@ export function AboutSection() {
 
                 {/* Skill pills */}
                 <div style={{ display: "flex", flexWrap: "wrap", gap: "0.4rem" }}>
-                    {["Python", "Java", "C", "Data Science", "SQL", "Pandas", "DaVinci Resolve"].map(skill => (
+                    {["Python", "Java", "C", "Data Science", "SQL", "Pandas", "Machine Learning", "Flutter"].map(skill => (
                         <span key={skill} style={{
                             fontFamily: "'JetBrains Mono', monospace",
                             fontSize: 9,
                             letterSpacing: "0.2em",
-                            color: "rgba(0,229,204,0.8)",
-                            background: "rgba(0,229,204,0.06)",
-                            border: "1px solid rgba(0,229,204,0.15)",
+                            color: "rgba(236,239,244,0.7)",
+                            background: "rgba(255,255,255,0.05)",
+                            border: "1px solid rgba(255,255,255,0.12)",
                             borderRadius: "0.375rem",
                             padding: "0.25rem 0.6rem",
                             textTransform: "uppercase",
@@ -165,7 +161,7 @@ export function AboutSection() {
                 </div>
             </div>
 
-            {/* Right — profile image, no filters */}
+            {/* Right — profile image */}
             <div
                 data-cursor="hover"
                 style={{
@@ -178,12 +174,12 @@ export function AboutSection() {
                     marginTop: "calc(10px + 1.5rem)",
                 }}
             >
-                {/* Teal glow */}
+                {/* Subtle white glow */}
                 <div style={{
                     position: "absolute",
                     bottom: 0, right: 0,
                     width: "55%", height: "55%",
-                    background: "radial-gradient(ellipse at bottom right, rgba(0,229,204,0.4), transparent 70%)",
+                    background: "radial-gradient(ellipse at bottom right, rgba(255,255,255,0.12), transparent 70%)",
                     filter: "blur(30px)",
                     zIndex: 0,
                     pointerEvents: "none",
@@ -200,7 +196,7 @@ export function AboutSection() {
                 <div style={{
                     position: "absolute", inset: 0,
                     borderRadius: "2rem",
-                    border: "1px solid rgba(0,229,204,0.15)",
+                    border: "1px solid rgba(255,255,255,0.1)",
                     zIndex: 2,
                     pointerEvents: "none",
                 }} />

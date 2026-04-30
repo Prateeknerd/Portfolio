@@ -40,14 +40,14 @@ export function PageLoader({ onComplete }: PageLoaderProps) {
             alignItems: "center", justifyContent: "center",
             gap: "2.5rem",
         }}>
-            {/* Teal glow orb */}
+            {/* White glow orb */}
             <div style={{
                 position: "absolute",
                 width: 280, height: 280,
                 borderRadius: "50%",
-                background: "radial-gradient(circle, #00E5CC, #8B5CF6)",
+                background: "radial-gradient(circle, rgba(255,255,255,0.9), rgba(180,180,180,0.3))",
                 filter: "blur(60px)",
-                opacity: 0.25,
+                opacity: 0.15,
                 animation: "pulse-orb 2s ease-in-out infinite",
             }} />
 

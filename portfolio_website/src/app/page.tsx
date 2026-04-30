@@ -18,9 +18,10 @@ import { SectionContainer } from "@/components/layout/SectionContainer";
 import { HeroSection } from "@/components/sections/Hero";
 import { AboutSection } from "@/components/sections/About";
 import { WorkSection } from "@/components/sections/Projects";
+import { SkillsSection } from "@/components/sections/Skills";
 import { ContactSection } from "@/components/sections/Contact";
 
-const TOTAL_SECTIONS = 4;
+const TOTAL_SECTIONS = 5;
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -38,8 +39,8 @@ export default function Home() {
       {/* Custom magnetic cursor */}
       <CustomCursor />
 
-      {/* Background interactive waves */}
-      <InteractiveWavesBackground />
+      {/* Background interactive waves — monochrome */}
+      <InteractiveWavesBackground lineColor="rgba(255, 255, 255, 0.06)" />
 
       {/* Page loader — renders until loaded */}
       {!loaded && <PageLoader onComplete={handleLoaderComplete} />}
@@ -69,6 +70,7 @@ export default function Home() {
             <HeroSection onNext={() => setCurrentSection(1)} />
             <AboutSection />
             <WorkSection />
+            <SkillsSection />
             <ContactSection />
           </SectionContainer>
         </>

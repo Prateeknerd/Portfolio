@@ -12,8 +12,9 @@ interface CircularNavProps {
 const NAV_LINKS = [
     { label: "Home", index: 0 },
     { label: "About", index: 1 },
-    { label: "Work", index: 2 },
-    { label: "Contact", index: 3 },
+    { label: "Projects", index: 2 },
+    { label: "Skills", index: 3 },
+    { label: "Contact", index: 4 },
 ];
 
 export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
@@ -27,7 +28,7 @@ export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
             style={{
                 position: "fixed",
                 inset: 0,
-                background: "#08090E",
+                background: "#111111",
                 zIndex: 1000,
                 clipPath: isOpen ? "circle(150% at 95% 5%)" : "circle(0% at 95% 5%)",
                 transition: "clip-path 0.8s cubic-bezier(0.23,1,0.32,1)",
@@ -59,8 +60,8 @@ export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
                     transition: "border-color 0.3s, background 0.3s",
                 }}
                 onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(0,229,204,0.15)";
-                    (e.currentTarget as HTMLElement).style.borderColor = "#00E5CC";
+                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.12)";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.3)";
                 }}
                 onMouseLeave={e => {
                     (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.06)";
@@ -71,7 +72,7 @@ export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
             </button>
 
             {/* Nav links */}
-            <nav style={{ display: "flex", flexDirection: "column", gap: "0.25rem" }}>
+            <nav style={{ display: "flex", flexDirection: "column", gap: "0.1rem" }}>
                 {NAV_LINKS.map((link, i) => (
                     <button
                         key={link.label}
@@ -83,9 +84,9 @@ export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
                             cursor: "none",
                             fontFamily: "'Cabinet Grotesk', sans-serif",
                             fontWeight: 900,
-                            fontSize: "clamp(3.5rem, 8vw, 8rem)",
+                            fontSize: "clamp(3rem, 7vw, 7rem)",
                             lineHeight: 1.05,
-                            WebkitTextStroke: "1px rgba(236,239,244,0.35)",
+                            WebkitTextStroke: "1px rgba(236,239,244,0.3)",
                             color: "transparent",
                             letterSpacing: "-0.02em",
                             textAlign: "left",
@@ -94,18 +95,18 @@ export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
                             transitionProperty: "opacity, color, -webkit-text-stroke-color, transform",
                             transitionDuration: "0.5s, 0.3s, 0.3s, 0.35s",
                             transitionTimingFunction: "ease, ease, ease, cubic-bezier(0.23,1,0.32,1)",
-                            transitionDelay: isOpen ? `${i * 0.07 + 0.3}s` : "0s",
+                            transitionDelay: isOpen ? `${i * 0.06 + 0.25}s` : "0s",
                         }}
                         onMouseEnter={e => {
                             const el = e.currentTarget as HTMLElement;
-                            el.style.color = "#00E5CC";
-                            el.style.webkitTextStrokeColor = "#00E5CC";
+                            el.style.color = "#ECEFF4";
+                            el.style.webkitTextStrokeColor = "#ECEFF4";
                             el.style.transform = "translateX(16px)";
                         }}
                         onMouseLeave={e => {
                             const el = e.currentTarget as HTMLElement;
                             el.style.color = "transparent";
-                            el.style.webkitTextStrokeColor = "rgba(236,239,244,0.35)";
+                            el.style.webkitTextStrokeColor = "rgba(236,239,244,0.3)";
                             el.style.transform = "translateX(0)";
                         }}
                     >
@@ -123,11 +124,11 @@ export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
                     fontFamily: "'JetBrains Mono', monospace",
                     fontSize: 10,
                     letterSpacing: "0.5em",
-                    color: "rgba(236,239,244,0.2)",
+                    color: "rgba(236,239,244,0.18)",
                     textTransform: "uppercase",
                 }}
             >
-                PRATEEK TAMMISETTY — 2026
+                PRATEEK TAMMISETTY
             </div>
         </div>
     );

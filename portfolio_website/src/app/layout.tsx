@@ -9,12 +9,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Prateek Tammisetty — Portfolio",
-  description: "Data Science student & creative video editor. Crafting experiences at the intersection of technology and storytelling.",
-  keywords: ["Portfolio", "Data Science", "Video Editing", "SideQuest", "Manipal", "Prateek Tammisetty"],
+  title: "Prateek Tammisetty — Developer Portfolio",
+  description: "Computer Science & Data Science student at MIT Bengaluru. Building with Python, Java, Flutter & more — turning ideas into working software.",
+  keywords: ["Portfolio", "Data Science", "Machine Learning", "Python", "Flutter", "Java", "Developer", "Manipal", "Prateek Tammisetty"],
   openGraph: {
-    title: "Prateek Tammisetty — Portfolio",
-    description: "Data Science student & creative video editor.",
+    title: "Prateek Tammisetty — Developer Portfolio",
+    description: "CS & Data Science student building real-world projects.",
     type: "website",
   },
 };
