@@ -20,8 +20,9 @@ import { AboutSection } from "@/components/sections/About";
 import { WorkSection } from "@/components/sections/Projects";
 import { SkillsSection } from "@/components/sections/Skills";
 import { ContactSection } from "@/components/sections/Contact";
+import { CertificatesSection } from "@/components/sections/Certificates";
 
-const TOTAL_SECTIONS = 5;
+const TOTAL_SECTIONS = 6;
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -71,6 +72,7 @@ export default function Home() {
             <AboutSection />
             <WorkSection />
             <SkillsSection />
+            <CertificatesSection />
             <ContactSection />
           </SectionContainer>
         </>

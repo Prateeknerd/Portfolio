@@ -14,7 +14,8 @@ const NAV_LINKS = [
     { label: "About", index: 1 },
     { label: "Projects", index: 2 },
     { label: "Skills", index: 3 },
-    { label: "Contact", index: 4 },
+    { label: "Certificates", index: 4 },
+    { label: "Contact", index: 5 },
 ];
 
 export function CircularNav({ isOpen, onClose, onNavigate }: CircularNavProps) {
