@@ -1,36 +1,98 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Prateek's Portfolio
 
-## Getting Started
+A high-performance, visually stunning portfolio website built with the latest web technologies. This project showcases my skills, projects, and professional journey with a focus on seamless animations and premium user experience.
 
-First, run the development server:
+![Portfolio Preview](https://via.placeholder.com/1200x600?text=Portfolio+Preview+Coming+Soon)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
+
+- **Modern Tech Stack**: Built with Next.js 16 (App Router) and React 19.
+- **Premium Animations**: Smooth, high-performance animations using **GSAP** and **Framer Motion**.
+- **Responsive Design**: Fully optimized for all screen sizes using **Tailwind CSS v4**.
+- **Dynamic Content**:
+  - **Hero Section**: Engaging introduction with dynamic text.
+  - **About Me**: Detailed professional background.
+  - **Projects Showcase**: Interactive grid featuring my best work.
+  - **Skills Grid**: Visual representation of my technical expertise.
+  - **Contact Form**: Fully functional contact section powered by **EmailJS**.
+- **Visual Excellence**: Includes grain overlays, section progress tracking, and custom UI components.
+- **Performance Optimized**: Leverages Next.js server components and Vercel Analytics.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/)
+- **Library**: [React 19](https://react.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations**: [GSAP](https://gsap.com/) & [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
+- **Components**: [Radix UI](https://www.radix-ui.com/) & [Shadcn UI](https://ui.shadcn.com/)
+- **Email Service**: [EmailJS](https://www.emailjs.com/)
+- **Deployment**: [Vercel](https://vercel.com/)
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ 
+- npm / yarn / pnpm
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/portfolio_website.git
+   ```
+
+2. Navigate to the project directory:
+   ```bash
+   cd portfolio_website
+   ```
+
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+4. Set up environment variables:
+   Create a `.env.local` file in the root and add your EmailJS keys:
+   ```env
+   NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+   NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+   NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
+
+5. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📦 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```text
+src/
+├── components/
+│   ├── core/          # Reusable base components (GrainOverlay, SectionProgress)
+│   ├── layout/        # Layout components (Header, Footer)
+│   └── sections/      # Page sections (Hero, About, Projects, Skills, Contact)
+├── app/               # Next.js App Router pages
+└── styles/            # Global styles and Tailwind configuration
+```
 
-## Learn More
+## 🌐 Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The easiest way to deploy this project is via the [Vercel Platform](https://vercel.com/new).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push your code to GitHub.
+2. Import the repository into Vercel.
+3. Configure your environment variables in the Vercel dashboard.
+4. Deploy!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 License
 
-## Deploy on Vercel
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with 💻 and ☕ by [Prateek](https://github.com/Prateeknerd)
